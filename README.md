@@ -2,6 +2,10 @@
 
 ## Requirement
  - python >= 3.5
+ - websockets [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
+
+
+
 
 ## Set up
 Update apt
@@ -18,6 +22,7 @@ Install websockets
 sudo apt-get install -y python3-websockets
 ```
 
+## Start server
 Run server.py
 ```
 python3 server.py
