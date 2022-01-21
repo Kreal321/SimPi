@@ -17,6 +17,7 @@ const ws = new WebSocket("ws://127.0.0.1:5678/");
 
 
 const inputbox = document.getElementById("text");
+const checkbox = document.getElementById("check");
 const msgbox = document.getElementById("msg");
 
 
@@ -28,20 +29,33 @@ function addMsg(str) {
 
 
 // Send a new message
-function send(){
-    
+function sendMsg(str){
     try {
-        ws.send(inputbox.value);
-        addMsg("Message sent: " + inputbox.value);
-        log("Message send to server: " + inputbox.value);
+        ws.send(str);
+        addMsg("Message sent: " + str);
+        log("Message send to server: " + str);
     } catch (error) {
         document.getElementById("h").innerHTML= stuff;
         log(error, true);
     }
+}
 
-
+function send(){
+    sendMsg(inputbox.value);
 
 }
+
+
+checkbox.addEventListener('change', (event) => {
+    if (checkbox.checked == true){
+        sendMsg("Power up GPIO 1");
+    }else{
+        sendMsg("Power off GPIO 1");
+    }
+    
+})
+
+
 
 
 // Receive a new message
