@@ -32,7 +32,7 @@ function addMsg(str) {
 function sendMsg(str){
     try {
         ws.send(str);
-        addMsg("Message sent: " + str);
+        addMsg("<br/>Message sent: " + str);
         log("Message send to server: " + str);
     } catch (error) {
         document.getElementById("h").innerHTML= stuff;

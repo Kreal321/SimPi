@@ -12,8 +12,13 @@ async def process(ws):
     message = await ws.recv()
     print(f'Received from client{ws.remote_address}: {message}')
     for client in connected_clients:
-        await client.send(f"Server received: {message}")
-
+        await client.send(f"Server has received a message [{message}]")
+    if message == "hello":
+        await ws.send("Hello! Nice to meet you")
+    elif message == "Power up GPIO 1":
+        await ws.send("GPIO 1 powered up")
+    elif message == "Power off GPIO 1":  
+        await ws.send("GPIO 1 powered off")
 
 
 # For each WebSocket connection
