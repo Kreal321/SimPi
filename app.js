@@ -13,7 +13,19 @@ function log(str, error = false){
 
 
 // create new websocket connection
-const ws = new WebSocket("ws://127.0.0.1:5678/");
+var ip = "";
+var ws = null;
+document.getElementById("ipBtn").addEventListener("click", ()=>{
+    ip = document.getElementById("ip").value;
+    ws = new WebSocket("ws://" + ip + ":80/");
+    // Receive a new message
+    ws.addEventListener('message', (event)=>{
+        addMsg("Message received: " + event.data);
+        log("Message received from server: " + event.data);
+
+    })
+})
+
 
 
 const inputbox = document.getElementById("text");
@@ -57,13 +69,6 @@ checkbox.addEventListener('change', (event) => {
 
 
 
-
-// Receive a new message
-ws.addEventListener('message', (event)=>{
-    addMsg("Message received: " + event.data);
-    log("Message received from server: " + event.data);
-
-})
 
 
 // message will be json in the future

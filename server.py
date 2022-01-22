@@ -1,11 +1,12 @@
 # Server Python >= 3.5
 # To start the server: run python3 server.py first then run client
-
+import sys
 import asyncio
 import websockets
 
 # Connected websocket (clients list)
 connected_clients = set()
+
 
 # Main process
 async def process(ws):
@@ -39,8 +40,23 @@ async def server(ws:str, path:int):
 
     finally:
         connected_clients.remove(ws)
-        
-start_server = websockets.serve(server, '127.0.0.1', 5678, ping_timeout=None)
 
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+
+# Main
+if __name__ == '__main__':
+    ip = '127.0.0.1'
+    try:
+        if sys.argv[1] == "remote":
+            ip = sys.argv[2]
+
+    except Exception as e:
+        print(e)
+
+
+    start_server = websockets.serve(server, ip, 80, ping_timeout=None)
+    print(f"Start server on {ip}")
+
+    asyncio.get_event_loop().run_until_complete(start_server)
+    asyncio.get_event_loop().run_forever()
+        
+
