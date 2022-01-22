@@ -3,7 +3,7 @@
 ## Requirement
  - python >= 3.5
  - websockets [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
- - open public network connection in firewall for python if you want to run it remotely
+ - allow python to connect to public network in firewall if you want to run it remotely
 
 
 
@@ -28,7 +28,7 @@ Run server.py
 python3 server.py
 ```
 
-Run index.html
+Run index.html \
 Connect to 127.0.0.1
 
 ## Start server remotely
@@ -37,7 +37,7 @@ Run remote.bat
 start remote.bat
 ```
 
-Run index.html
+Run index.html \
 Connect to the ip address show in the server terminal
 
 
