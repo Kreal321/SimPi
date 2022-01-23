@@ -13,7 +13,6 @@ import psutil
 connected_clients = set()
 
 simpi = NULL
-pause = NULL
 
 # Send message to clients/client
 async def send(msg, client = NULL):
@@ -23,19 +22,59 @@ async def send(msg, client = NULL):
         for connected_client in connected_clients:
             await connected_client.send(msg)
 
+# SimpiProcess class for controling simpi child process
+class SimpiProcess:
+    process = NULL
+    processutil = NULL
 
-# actions
-def turnOn(source):
-    # TODO
-    send(f"Turn on {source}")
+    def __init__(self):
+        self.process = multiprocessing.Process(target=simpi_processing, args=())
+        self.process.start()
+        self.processutil = psutil.Process(self.process.pid)
 
-def turnOff(source):
-    # TODO
-    send(f"Turn off {source}")
+    def suspend(self):
+        self.processutil.suspend()
 
-def wait(time):
-    # TODO
-    send(f"Wait {time}")
+    def resume(self):
+        self.processutil.resume()
+
+    def kill(self):
+        self.process.kill()
+
+
+class Simpi:
+    simpiprocess = NULL
+
+    def __init__(self, process):
+        self.simpiprocess = process
+
+    # actions
+    def turnOn(self, source):
+        # TODO
+        send(f"Turn on {source}")
+
+    def turnOff(self, source):
+        # TODO
+        send(f"Turn off {source}")
+
+    def wait(self, time):
+        # TODO
+        send(f"Wait {time}")
+
+    async def suspend(self):
+        self.simpiprocess.suspend()
+        await send(f"Simpi is suspended")
+        print(f"Simpi is suspended")
+
+    async def resume(self):
+        self.simpiprocess.resume()
+        await send(f"Simpi is resumed")
+        print(f"Simpi is resumed")
+
+    async def stop(self):
+        self.simpiprocess.kill()
+        await send(f"Simpi is stoped")
+        print(f"Simpi is stoped")
 
 
 
@@ -49,22 +88,17 @@ def simpi_processing():
 
 # Main process handling message processing
 async def process(ws):
-    global pause
+    global simpi
     message = await ws.recv()
     print(f'Received from client{ws.remote_address}: {message}')
     await send(f"Server has received a message [{message}]")
 
     if message == "hello":
         await ws.send("Hello! Nice to meet you")
-    elif message == "Power up GPIO 1":
-        await ws.send("GPIO 1 powered up")
-        print(pause)
-        pause.suspend()
-        await ws.send("Simpi suspended") 
-    elif message == "Power off GPIO 1":  
-        await ws.send("GPIO 1 powered off")
-        pause.resume()
-        await ws.send("Simpi resumed") 
+    elif message == "Suspend Simpi":
+        await simpi.suspend()
+    elif message == "Resume Simpi":  
+        await simpi.resume()
 
         
 
@@ -104,9 +138,8 @@ if __name__ == '__main__':
         print(e)
 
     # Start Simpi Process
-    simpi = multiprocessing.Process(target=simpi_processing, args=())
-    simpi.start()
-    pause = psutil.Process(simpi.pid)
+    simpi = Simpi(SimpiProcess())
+ 
 
     # Start server
     server = websockets.serve(handler, ip, 80, ping_timeout=None)

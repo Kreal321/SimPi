@@ -60,9 +60,9 @@ function send(){
 
 checkbox.addEventListener('change', (event) => {
     if (checkbox.checked == true){
-        sendMsg("Power up GPIO 1");
+        sendMsg("Suspend Simpi");
     }else{
-        sendMsg("Power off GPIO 1");
+        sendMsg("Resume Simpi");
     }
     
 })

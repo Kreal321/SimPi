@@ -2,8 +2,8 @@
 
 ## Requirement
  - python >= 3.5
- - websockets [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
- - psutil
+ - websockets  Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
+ - psutil  
  - allow python to connect to public network in firewall if you want to run it remotely
 
 
@@ -71,6 +71,9 @@ Connect to the ip address show in the server terminal
 ## Change log
 ### 1/23/2022
 - Add multiprocessing to handle background simpi process
+- Create SimpiProcess class to better control background child process
+- Add suspend and resume method for SimpiProcess
+- Create Simpi class to handle actions
 
 ### 1/22/2022
 - Add remote connection
