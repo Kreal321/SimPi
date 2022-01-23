@@ -1,6 +1,5 @@
 # Server Python >= 3.5
 # To start the server: run python3 server.py first then run client
-from asyncio.windows_events import NULL
 import sys
 import asyncio
 import websockets
@@ -15,7 +14,7 @@ connected_clients = set()
 simpi = None
 
 # Send message to clients/client
-async def send(msg, client = NULL):
+async def send(msg, client = None):
     if(client):
         await client.send(msg)
     else:
@@ -24,8 +23,8 @@ async def send(msg, client = NULL):
 
 # SimpiProcess class for controling simpi child process
 class SimpiProcess:
-    process = NULL
-    processutil = NULL
+    process = None
+    processutil = None
 
     def __init__(self):
         self.process = multiprocessing.Process(target=simpi_processing, args=())
@@ -43,7 +42,7 @@ class SimpiProcess:
 
 
 class Simpi:
-    simpiprocess = NULL
+    simpiprocess = None
 
     def __init__(self, process):
         self.simpiprocess = process
