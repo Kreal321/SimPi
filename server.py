@@ -1,7 +1,6 @@
 # Server Python >= 3.5
 # To start the server: run python3 server.py first then run client
 from asyncio.windows_events import NULL
-import imp
 import sys
 import asyncio
 import websockets

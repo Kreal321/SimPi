@@ -3,6 +3,7 @@
 ## Requirement
  - python >= 3.5
  - websockets [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
+ - psutil
  - allow python to connect to public network in firewall if you want to run it remotely
 
 
@@ -17,6 +18,10 @@ sudo apt-get update -y
 Install websockets
 ```
 sudo apt-get install -y python3-websockets
+```
+Install psutil
+```
+sudo apt-get install -y psutil
 ```
 
 Check python version
@@ -64,6 +69,9 @@ Connect to the ip address show in the server terminal
 
 
 ## Change log
+### 1/23/2022
+- Add multiprocessing to handle background simpi process
+
 ### 1/22/2022
 - Add remote connection
 - Add windows batch file to start server just one click
