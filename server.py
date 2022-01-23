@@ -12,7 +12,7 @@ import psutil
 # Connected websocket (clients list)
 connected_clients = set()
 
-simpi = NULL
+simpi = None
 
 # Send message to clients/client
 async def send(msg, client = NULL):

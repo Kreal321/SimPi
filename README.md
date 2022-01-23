@@ -21,7 +21,7 @@ sudo apt-get install -y python3-websockets
 ```
 Install psutil
 ```
-sudo apt-get install -y psutil
+sudo apt-get install -y python3-psutil
 ```
 
 Check python version
@@ -35,6 +35,27 @@ Install python 3.7
 ```
 sudo apt install python3.7
 ```
+
+## Set up on raspberry with command line
+Install git
+```
+sudo apt install git
+git clone https://github.com/Kreal321/SimPi.git
+```
+
+Update apt
+```
+sudo apt-get update -y
+```
+Install websockets
+```
+sudo apt-get install -y python3-websockets
+```
+Install psutil
+```
+sudo apt-get install -y python3-psutil
+```
+
 
 ## Start server locally
 Run server.py
