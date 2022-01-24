@@ -1,5 +1,16 @@
 # SimPi
 
+## Table of Content
+- [SimPi](#simpi)
+  * [Requirement](#requirement)
+  * [Set up on raspberry](#set-up-on-raspberry)
+  * [Set up on raspberry with command line](#set-up-on-raspberry-with-command-line)
+  * [Start server locally](#start-server-locally)
+  * [Start server remotely](#start-server-remotely)
+    + [Server is on Linux](#server-is-on-linux)
+    + [Server is on Windows](#server-is-on-windows)
+  * [Change log](#change-log)
+
 ## Requirement
  - python >= 3.5
  - websockets  Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
@@ -90,6 +101,11 @@ Connect to the ip address show in the server terminal
 
 
 ## Change log
+### 1/24/2022
+- Add documation for server.py file
+- Add start action for Simpi process
+- Add status checking when start/suspend/resume a Simpi process
+
 ### 1/23/2022
 - Add multiprocessing to handle background simpi process
 - Create SimpiProcess class to better control background child process
