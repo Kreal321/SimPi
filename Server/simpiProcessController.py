@@ -22,7 +22,7 @@ class SimpiProcessController:
     def suspend(self):
         """suspend simpi process
         """
-        if(self.processutil.status() == "running"): 
+        if(self.processutil.status() == "running" or self.processutil.status() == "sleeping"): 
             self.processutil.suspend()
         else:
             print(self.processutil.status())
