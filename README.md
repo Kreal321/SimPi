@@ -101,8 +101,8 @@ Connect to the ip address show in the server terminal
 
 ## Change log
 ### 1/25/2022
-- Sepearte server.py file
-- Create Clients class for send and receive messages
+- Seperate server.py file
+- Create Messager class for send and receive messages
 - Create messages for encoding and decoding JSON later
 - Fix suspend/resume simpi none type bugs
 - Add stop method

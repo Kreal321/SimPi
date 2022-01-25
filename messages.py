@@ -1,8 +1,8 @@
 from simpi import Simpi, simpi
 
-from clients import Clients
+from messager import Messager
 
-connected_clients = Clients()
+connected_clients = Messager()
 
 async def decoding(ws, message):
     global simpi

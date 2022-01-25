@@ -2,7 +2,7 @@ import websockets
 
 import messages as msg
 
-class Clients:
+class Messager:
     clients = set()
     
     def __init__(self) -> None:
