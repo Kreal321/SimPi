@@ -103,6 +103,7 @@ Connect to the ip address show in the server terminal
 ### 1/26/2022
 - Made some changes on simpi and simpiController
 - Change files path, add server, path, build folders
+- Fix linux suspend bugs
 
 ### 1/25/2022
 - Seperate server.py file
