@@ -4,7 +4,7 @@ from simpiProcessController import SimpiProcessController
 
 simpi = None
 
-class Simpi:
+class SimpiController:
     """Simpi class
     """
     SimpiProcessController = None

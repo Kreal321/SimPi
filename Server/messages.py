@@ -1,4 +1,4 @@
-from simpi import Simpi, simpi
+from simpiController import SimpiController, simpi
 
 from messager import Messager
 
@@ -17,7 +17,7 @@ async def decoding(ws, message):
         if(simpi):
             print("Warning: simpi process is running")
         else:
-            simpi = Simpi(connected_clients, 100)
+            simpi = SimpiController(connected_clients, 100)
     elif message == "stop":
         # Stop Simpi Process
         if(simpi):

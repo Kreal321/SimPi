@@ -1,7 +1,7 @@
 import multiprocessing
 import psutil
 
-from simpiProcess import simpi_processing
+from simpi import simpiProcess
 
 
 class SimpiProcessController:
@@ -15,7 +15,7 @@ class SimpiProcessController:
         Args:
             data (dictionary): 
         """
-        self.process = multiprocessing.Process(target=simpi_processing, args=(data,))
+        self.process = multiprocessing.Process(target=simpiProcess, args=(data,))
         self.process.start()
         self.processutil = psutil.Process(self.process.pid)
 
@@ -25,6 +25,7 @@ class SimpiProcessController:
         if(self.processutil.status() == "running"): 
             self.processutil.suspend()
         else:
+            print(self.processutil.status())
             print("Warning: the simpi process is already suspended")
 
     def resume(self):
@@ -33,6 +34,7 @@ class SimpiProcessController:
         if(self.processutil.status() == "stopped"): 
             self.processutil.resume()
         else:
+            print(self.processutil.status())
             print("Warning: the simpi process is already running")
 
     def kill(self):
