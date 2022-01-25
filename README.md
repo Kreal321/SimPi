@@ -1,15 +1,14 @@
 # SimPi
 
 ## Table of Content
-- [SimPi](#simpi)
-  * [Requirement](#requirement)
-  * [Set up on raspberry](#set-up-on-raspberry)
-  * [Set up on raspberry with command line](#set-up-on-raspberry-with-command-line)
-  * [Start server locally](#start-server-locally)
-  * [Start server remotely](#start-server-remotely)
-    + [Server is on Linux](#server-is-on-linux)
-    + [Server is on Windows](#server-is-on-windows)
-  * [Change log](#change-log)
+- [Requirement](#requirement)
+- [Set up on raspberry](#set-up-on-raspberry)
+- [Set up on raspberry with command line](#set-up-on-raspberry-with-command-line)
+- [Start server locally](#start-server-locally)
+- [Start server remotely](#start-server-remotely)
+  * [Server is on Linux](#server-is-on-linux)
+  * [Server is on Windows](#server-is-on-windows)
+- [Change log](#change-log)
 
 ## Requirement
  - python >= 3.5
@@ -101,6 +100,13 @@ Connect to the ip address show in the server terminal
 
 
 ## Change log
+### 1/25/2022
+- Sepearte server.py file
+- Create Clients class for send and receive messages
+- Create messages for encoding and decoding JSON later
+- Fix suspend/resume simpi none type bugs
+- Add stop method
+
 ### 1/24/2022
 - Add documation for server.py file
 - Add start action for Simpi process
@@ -108,8 +114,8 @@ Connect to the ip address show in the server terminal
 
 ### 1/23/2022
 - Add multiprocessing to handle background simpi process
-- Create SimpiProcess class to better control background child process
-- Add suspend and resume method for SimpiProcess
+- Create SimpiProcessController class to better control background child process
+- Add suspend and resume method for SimpiProcessController
 - Create Simpi class to handle actions
 
 ### 1/22/2022
