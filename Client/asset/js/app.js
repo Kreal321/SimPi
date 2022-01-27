@@ -37,6 +37,7 @@ const msgbox = document.getElementById("msg");
 function addMsg(str) {
     var msg = msgbox.innerHTML;
     msgbox.innerHTML = msg + str + "<br />";
+    msgbox.scrollTop = msgbox.scrollHeight;
 }
 
 
@@ -57,15 +58,14 @@ function send(){
 
 }
 
+const controllerBtns = document.getElementById("controller-btns").childNodes
 
-checkbox.addEventListener('change', (event) => {
-    if (checkbox.checked == true){
-        sendMsg("Suspend Simpi");
-    }else{
-        sendMsg("Resume Simpi");
-    }
-    
-})
+controllerBtns.forEach( (btn) => {
+    btn.addEventListener('click', (e) => {
+        sendMsg(btn.innerText)
+    })
+});
+
 
 
 

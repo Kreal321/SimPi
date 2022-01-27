@@ -15,7 +15,7 @@
  - websockets  Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
  - psutil  
  - allow python to connect to public network in firewall if you want to run it remotely
-
+ - Bootstrap v5.1.3 [Documation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
 
 
 ## Set up on raspberry
@@ -100,6 +100,12 @@ Connect to the ip address show in the server terminal
 
 
 ## Change log
+### 1/27/2022
+- Add Bootstrap to client
+- Beautify the interface
+- Add start/suspend/resume/stop buttons
+- Add Server screen
+
 ### 1/26/2022
 - Made some changes on simpi and simpiController
 - Change files path, add server, path, build folders

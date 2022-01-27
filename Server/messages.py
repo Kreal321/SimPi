@@ -12,25 +12,25 @@ async def decoding(ws, message):
 
     if message == "hello":
         await ws.send("Hello! Nice to meet you")
-    elif message == "start":
+    elif message == "Start":
         # Start Simpi Process
         if(simpi):
             print("Warning: simpi process is running")
         else:
             simpi = SimpiController(connected_clients, 100)
-    elif message == "stop":
+    elif message == "Stop":
         # Stop Simpi Process
         if(simpi):
             await simpi.stop()
             simpi = None
         else:
             print("Warning: simpi process is not starting yet")
-    elif message == "Suspend Simpi":
+    elif message == "Suspend":
         if(simpi):
             await simpi.suspend()
         else:
             print("Warning: simpi process is not starting yet")
-    elif message == "Resume Simpi":  
+    elif message == "Resume":  
         if(simpi):
             await simpi.resume()
         else:
