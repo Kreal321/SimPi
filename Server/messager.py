@@ -13,17 +13,17 @@ class Messager:
         print(f'A client just connected {ws.remote_address}')
         self.clients.add(ws)
 
-    async def send(self, msg: str, client = None):
+    async def send(self, message: str, client = None):
         """Send message to clients/client
         Args:
             msg (str): message to send
             client (WebSocketServerProtocol, optional): the client receive message. Defaults to None (send to all clients).
         """
         if client:
-            await client.send(msg)
+            await client.send(msg.encoding(message))
         else:
             for c in self.clients:
-                await c.send(msg)
+                await c.send(msg.encoding(message))
 
 
     async def receiveMsgs(self, ws):
@@ -33,7 +33,7 @@ class Messager:
         """
         try:
             # Welcome message
-            await ws.send("Server is connected")
+            await ws.send(msg.encoding("Server is connected"))
 
             # Wait for client sending messages
             while True:

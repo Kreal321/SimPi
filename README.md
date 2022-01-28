@@ -100,6 +100,10 @@ Connect to the ip address show in the server terminal
 
 
 ## Change log
+### 1/28/2022
+- Add JSON for message communcitating
+- Add encoding and decoding functions for server and client slides
+
 ### 1/27/2022
 - Add Bootstrap to client
 - Beautify the interface

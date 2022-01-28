@@ -20,8 +20,12 @@ document.getElementById("ipBtn").addEventListener("click", ()=>{
     ws = new WebSocket("ws://" + ip + ":80/");
     // Receive a new message
     ws.addEventListener('message', (event)=>{
-        addMsg("Message received: " + event.data);
-        log("Message received from server: " + event.data);
+        var msg = JSON.parse(event.data)
+        if (msg.type == 0) {
+            addMsg("Message received: " + msg['data']);
+            log("Info: Message received from server: " + msg['data']);
+        }
+        
 
     })
 })
@@ -41,12 +45,19 @@ function addMsg(str) {
 }
 
 
-// Send a new message
-function sendMsg(str){
+/**
+ * Send a new message and encoding to json
+ * 
+ * @param {*} data data to send
+ * @param {int} type 0: server message, 1: client message, 2: simpi config queue
+ */
+
+function sendMsg(data, type = 1){
     try {
-        ws.send(str);
-        addMsg("<br/>Message sent: " + str);
-        log("Message send to server: " + str);
+        msg = {data: data, type: type}
+        ws.send(JSON.stringify(msg));
+        addMsg("<br/>Message sent: " + data);
+        log("Message send to server: " + data);
     } catch (error) {
         document.getElementById("h").innerHTML= stuff;
         log(error, true);
