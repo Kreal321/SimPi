@@ -33,6 +33,7 @@ class Messager:
         """
         try:
             # Welcome message
+            await ws.send(msg.encoding(len(self.clients), 3))
             await ws.send(msg.encoding("Server is connected"))
 
             # Wait for client sending messages

@@ -24,6 +24,10 @@ document.getElementById("ipBtn").addEventListener("click", ()=>{
         if (msg.type == 0) {
             addMsg("Message received: " + msg['data']);
             log("Info: Message received from server: " + msg['data']);
+        } else if (msg.type == 3) {
+            if (msg.data > 1){
+                document.getElementById("alert").classList.remove("d-none")
+            }
         }
         
 
@@ -49,7 +53,7 @@ function addMsg(str) {
  * Send a new message and encoding to json
  * 
  * @param {*} data data to send
- * @param {int} type 0: server message, 1: client message, 2: simpi config queue
+ * @param {int} type 0: server message, 1: client message, 2: simpi config queue, 3: Multi-client management
  */
 
 function sendMsg(data, type = 1){

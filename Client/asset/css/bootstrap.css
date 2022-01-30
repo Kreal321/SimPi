@@ -5382,9 +5382,9 @@ textarea.form-control, textarea.form-control-lg, textarea.form-control-sm {
 }
 
 .alert-warning {
-    color: #973b26;
-    background-color: #fee0d9;
-    border-color: #fed0c6
+    color: #fff;
+    background-color: #fc7c5f;
+    border-color: #fc7c5f
 }
 
 .alert-warning .alert-link {

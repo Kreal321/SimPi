@@ -1,6 +1,7 @@
 # SimPi
 
 ## Table of Content
+- [File structure](#file-structure)
 - [Requirement](#requirement)
 - [Set up on raspberry](#set-up-on-raspberry)
 - [Set up on raspberry with command line](#set-up-on-raspberry-with-command-line)
@@ -9,6 +10,27 @@
   * [Server is on Linux](#server-is-on-linux)
   * [Server is on Windows](#server-is-on-windows)
 - [Change log](#change-log)
+
+## File structure
+```
+.
+├── Client                        # Client files
+│   ├── asset                     # Assets files for web application
+│   └── index.html                # Main page of the web application
+├── Server                        # Server files
+│   ├── __pycahe__                # Bytecode cache python files
+│   ├── Install                   # Files for installing
+│   ├── main.py
+│   ├── messager.py 
+│   ├── messages.py
+│   ├── simpi.py
+│   ├── simpiController.py
+│   └── simpiProcessController.py
+├── Document.md                   # Doc for developing
+├── README.md                     # Readme file
+├── remote.bat                    # Batch file for starting server on local network (windows)
+└── remote.sh                     # Batch file for starting server on local network (linux)
+```
 
 ## Requirement
  - python >= 3.5
@@ -100,6 +122,9 @@ Connect to the ip address show in the server terminal
 
 
 ## Change log
+### 1/30/2022
+- Add Multi-client detection and warning
+
 ### 1/28/2022
 - Add JSON for message communcitating
 - Add encoding and decoding functions for server and client slides
