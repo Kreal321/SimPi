@@ -615,7 +615,7 @@ progress {
 }
 
 .row {
-    --bs-gutter-x: 0;
+    --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
     display: flex;
     flex-wrap: wrap;
@@ -630,7 +630,7 @@ progress {
     max-width: 100%;
     padding-right: calc(var(--bs-gutter-x) * .5);
     padding-left: calc(var(--bs-gutter-x) * .5);
-    margin-top: var(--bs-gutter-y)
+    margin-top: var(--bs-gutter-y);
 }
 
 .col {
@@ -4904,7 +4904,7 @@ textarea.form-control, textarea.form-control-lg, textarea.form-control-sm {
     background-color: #fff;
     background-clip: border-box;
     border: 0 solid rgba(0, 0, 0, .125);
-    border-radius: 1rem
+    border-radius: 1rem;
 }
 
 .card>hr {

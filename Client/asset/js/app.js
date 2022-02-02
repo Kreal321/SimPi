@@ -82,8 +82,62 @@ controllerBtns.forEach( (btn) => {
 });
 
 
+var simpiQueue = []
+
+function updateQueueDisplay(){
+    const queue = document.getElementById("queue");
+    var text = ""
+    simpiQueue.forEach((option) => {
+        text += option.options[0] + "<br/>"
+    })
+    queue.innerHTML = text;
+}
 
 
+function addToSimpiQueue(){
+    switch(this.parentNode.getAttribute('simpiType')){
+        case "1":
+            simpiQueue.push({
+                type: 1,
+                options: ["Click to start"]
+            })
+            break;
+        case "2":
+            simpiQueue.push({
+                type: 2,
+                options: ["Suspend"]
+            })
+            break;
+        case "3":
+            simpiQueue.push({
+                type: 3,
+                options: ["Click to resume"]
+            })
+            break;
+        case "4":
+            simpiQueue.push({
+                type: 4,
+                options: ["Resume"]
+            })
+            break;
+        case "5":
+            const inputs = this.parentNode.getElementsByTagName("input");
+            simpiQueue.push({
+                type: 5,
+                options: ["Wait " + inputs[0].value + " minutes", inputs[0].value]
+            })
+            break;
+        default:
+            console.log(this.parentNode.getAttribute('simpiType'))
+            break;
+    }
+    console.log(simpiQueue)
+    updateQueueDisplay();
+}
 
 
-// message will be json in the future
+const simpiOptions = document.getElementsByClassName("btn-option")
+for (let i = 0; i < simpiOptions.length; i++) {
+    simpiOptions[i].addEventListener("click", addToSimpiQueue)
+}
+

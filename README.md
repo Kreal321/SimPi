@@ -122,6 +122,10 @@ Connect to the ip address show in the server terminal
 
 
 ## Change log
+### 2/2/2022
+- Client-side Simpi Queue draft
+- Client-side click to start, suspend, click to resume, resume, wait x minutes
+
 ### 1/30/2022
 - Add Multi-client detection and warning
 

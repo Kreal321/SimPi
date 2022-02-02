@@ -51,23 +51,6 @@
                 </div>
             </div>
 
-            <div class="col-lg-8 col-12">
-                <div class="card mb-4">
-                    <div class="card-body p-3">
-
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Server Controller</p>
-                        <h5 class="font-weight-bolder text-danger">Not connected</h5>
-                        <div class="input-group " id="controller-btns">
-                            <button class="btn btn-outline-primary">Start</button>
-                            <button class="btn btn-outline-primary">Suspend</button>
-                            <button class="btn btn-outline-primary">Resume</button>
-                            <button class="btn btn-outline-primary">Stop</button>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-            </div>
 
             <div class="col-lg-8 col-12">
                 <div class="card mb-4">
@@ -85,6 +68,26 @@
                 </div>
             </div>
 
+
+            <div class="col-lg-8 col-12">
+                <div class="card mb-4">
+                    <div class="card-body p-3">
+
+                        <p class="text-sm mb-0 text-uppercase font-weight-bold">SimPi Controller</p>
+                        <h5 class="font-weight-bolder text-danger">Not connected</h5>
+                        <div class="input-group " id="controller-btns">
+                            <button class="btn btn-outline-primary">Start</button>
+                            <button class="btn btn-outline-primary">Suspend</button>
+                            <button class="btn btn-outline-primary">Resume</button>
+                            <button class="btn btn-outline-primary">Stop</button>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+
             <div class="col-lg-8 col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0 p-3 d-flex">
@@ -97,6 +100,120 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-lg-8 col-12">
+                <div class="row justify-content-between">
+                    <div class="col-6 mb-4">
+                        <div class="card">
+                            <div class="card-header pb-0 p-3 d-flex">
+                                <h6>Queue</h6>
+                                
+                            </div>
+                            <div class="card-body pt-0 p-3">
+                                <div id="queue">
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-4">
+                        <div class="card">
+                            <div class="card-header pb-0 p-3 d-flex">
+                                <h6>Options</h6>
+
+                            </div>
+                            <div class="card-body pt-0 p-3">
+                                <div class="form-group">
+                                    <div class="input-group" simpiType="1">
+                                        <span class="input-group-text">Click to Start</span>
+                                        <button class="btn btn-outline-primary btn-option">Add</button>
+                                    </div>                          
+                                </div>
+                            </div>
+
+                            <div class="card-body pt-0 p-3">
+                                <div class="form-group">
+                                    <div class="input-group" simpiType="2">
+                                        <span class="input-group-text">Suspend</span>
+                                        <button class="btn btn-outline-primary btn-option">Add</button>
+                                    </div>                          
+                                </div>
+                            </div>
+                            <div class="card-body pt-0 p-3">
+                                <div class="form-group">
+                                    <div class="input-group" simpiType="3">
+                                        <span class="input-group-text">Click to Resume</span>
+                                        <button class="btn btn-outline-primary btn-option">Add</button>
+                                    </div>                          
+                                </div>
+                            </div>
+                            <div class="card-body pt-0 p-3">
+                                <div class="form-group">
+                                    <div class="input-group" simpiType="4">
+                                        <span class="input-group-text">Resume</span>
+                                        <button class="btn btn-outline-primary btn-option">Add</button>
+                                    </div>                          
+                                </div>
+                            </div>
+                            
+                            <div class="card-body pt-0 p-3">
+                                <div class="form-group">
+                                    <div class="input-group" simpiType="5">
+                                        <span class="input-group-text">Wait</span>
+                                        <input type="number" class="form-control" placeholder="number">
+                                        <span class="input-group-text">minutes</span>
+                                        <button class="btn btn-outline-primary btn-option">Add</button>
+                                    </div>
+                                                                   
+                                </div>
+                            </div>
+
+                            <div class="card-body pt-0 p-3">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-text">If</span>
+                                        <select class="form-control">
+                                            <option>Sensor input high</option>
+                                            <option>Source 2 is On</option>
+                                        </select>
+                                        <button class="btn btn-outline-primary">Add</button>
+                                    </div>
+                                                                   
+                                </div>
+                            </div>
+                            <div class="card-body pt-0 p-3">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-text">End If</span>
+                                        <button class="btn btn-outline-primary">Add</button>
+                                    </div>                          
+                                </div>
+                            </div>
+
+                            <div class="card-body pt-0 p-3">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon2">Turn</span>
+                                        <select class="form-control">
+                                            <option>ON</option>
+                                            <option>OFF</option>
+                                        </select>
+                                        <select class="form-control">
+                                            <option>Source 1</option>
+                                            <option>Source 2</option>
+                                            <option>Source 3</option>
+                                            <option>Source 4</option>
+                                        </select>
+                                        <button class="btn btn-outline-primary">Add</button>
+                                    </div>
+                                                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
