@@ -42,7 +42,7 @@ Stop `type: 40`
 Click to resume `type: 31`
 
 5. Wait
-Wait X mins `type: 50`
+Wait X mins `type: 5`
 
 6. Turn on Source
 7. Turn off Source

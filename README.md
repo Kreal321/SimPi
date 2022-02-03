@@ -26,6 +26,7 @@
 │   ├── simpi.py
 │   ├── simpiController.py
 │   └── simpiProcessController.py
+├── docs                          # Github page root path
 ├── Document.md                   # Doc for developing
 ├── README.md                     # Readme file
 ├── remote.bat                    # Batch file for starting server on local network (windows)
@@ -118,13 +119,19 @@ start remote.bat
 Run index.html \
 Connect to the ip address show in the server terminal
 
-
+## Start Client
+Go to https://kreal321.github.io/SimPi/
 
 
 ## Change log
+### 2/3/2022
+- Add SimPi queue Send button
+- Redesign SimPi queue options
+
 ### 2/2/2022
-- Client-side Simpi Queue draft
+- Client-side Simpi queue draft
 - Client-side click to start, suspend, click to resume, resume, wait x minutes
+- Create github page for simpi
 
 ### 1/30/2022
 - Add Multi-client detection and warning
