@@ -1,14 +1,15 @@
 # SimPi
+An interface used in Simpi box based on Raspberry Pi that can supplement simulator functions or enhance simulation environment
 
 ## Table of Content
 - [File structure](#file-structure)
-- [Requirement](#requirement)
-- [Set up on raspberry](#set-up-on-raspberry)
-- [Set up on raspberry with command line](#set-up-on-raspberry-with-command-line)
+- [Server Requirements](#server-requirements)
+- [Set up server environment](#set-up-server-environment)
 - [Start server locally](#start-server-locally)
 - [Start server remotely](#start-server-remotely)
   * [Server is on Linux](#server-is-on-linux)
   * [Server is on Windows](#server-is-on-windows)
+- [Start Client](#start-client)
 - [Change log](#change-log)
 
 ## File structure
@@ -33,26 +34,23 @@
 └── remote.sh                     # Batch file for starting server on local network (linux)
 ```
 
-## Requirement
+## Server Requirements
  - python >= 3.5
  - websockets  Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
  - psutil  
  - allow python to connect to public network in firewall if you want to run it remotely
- - Bootstrap v5.1.3 [Documation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
 
 
-## Set up on raspberry
-Install the latest version of Paspberry Pi OS
-
+## Set up server environment
 Update apt
 ```
 sudo apt-get update -y
 ```
-Install websockets
+Install `websockets`
 ```
 sudo apt-get install -y python3-websockets
 ```
-Install psutil
+Install `psutil`
 ```
 sudo apt-get install -y python3-psutil
 ```
@@ -61,43 +59,17 @@ Check python version
 ```
 python3 --version
 ```
-Require python >= 3.5
 
-
-Install python 3.7
+If python version < 3.5, install `python 3.7`. Required python version >= 3.5
 ```
 sudo apt install python3.7
 ```
-
-## Set up on raspberry with command line
-Install git
-```
-sudo apt install git
-git clone https://github.com/Kreal321/SimPi.git
-```
-
-Update apt
-```
-sudo apt-get update -y
-```
-Install websockets
-```
-sudo apt-get install -y python3-websockets
-```
-Install psutil
-```
-sudo apt-get install -y python3-psutil
-```
-
 
 ## Start server locally
 Run server.py
 ```
 python3 server.py
 ```
-
-Run index.html \
-Connect to 127.0.0.1
 
 ## Start server remotely
 ### Server is on Linux
@@ -107,20 +79,20 @@ sudo chmod +x remote.sh
 ./remote.sh
 ```
 
-Run index.html \
-Connect to the ip address show in the server terminal
-
 ### Server is on Windows
-Run remote.bat on windows for testing
+Run remote.bat on windows
 ```
 start remote.bat
 ```
 
-Run index.html \
-Connect to the ip address show in the server terminal
-
 ## Start Client
-Go to https://kreal321.github.io/SimPi/
+Run index.html \
+Or Go to https://kreal321.github.io/SimPi/
+
+Run index.html \
+Connect to the ip address show in the server terminal \
+e.g. Connect to `127.0.0.1` if server is run locally
+
 
 
 ## Change log
