@@ -42,7 +42,7 @@ Stop `type: 40` \
 ~Click to stop `type: 41`~
 
 #### 5. Wait
-Wait X mins `type: 5`
+Wait X mins `type: 50`
 Wait until X `type: 5X`
 
 #### 6. Turn on Source

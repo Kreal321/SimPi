@@ -98,6 +98,8 @@ function optionToString(option){
         "31": "Click to resume",
         "40": "Stop",
         "41": "Click to stop",
+        "51": "Wait until Sensor input high",
+        "52": "Wait until Source 2 is On"
     }
     if(option.type == "5"){
         return "Wait " + option.data[0] + " minutes";
@@ -124,13 +126,14 @@ function addToSimpiQueue(){
         case "2":
         case "3":
         case "4":
+        case "5":
             const selects = this.parentNode.getElementsByTagName("select")
             simpiQueue.push({
                 type: type + selects[0].value,
                 data: []
             })
             break;
-        case "5":
+        case "50":
             const inputs = this.parentNode.getElementsByTagName("input");
             simpiQueue.push({
                 type: 5,

@@ -98,6 +98,8 @@ e.g. Connect to `127.0.0.1` if server is run locally
 ## Change log
 ### 2/7/2022
 - Add Option class in server
+- Add shared signals array
+- Redesign SimPi queue
 
 ### 2/3/2022
 - Add SimPi queue Send button
