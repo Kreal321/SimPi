@@ -25,28 +25,28 @@ The number of current connected clients
     options: int/string/array
 }
 ```
-1. Start
-Start `type: 10`
+#### 1. Start
+Start `type: 10` \
 Click to start `type: 11`
 
-2. Suspend
-Suspend `type: 20`
+#### 2. Suspend
+Suspend `type: 20` \
 Click to suspend `type: 21`
 
-3. Resume 
-Resume `type: 30`
+#### 3. Resume 
+Resume `type: 30` \
 Click to resume `type: 31`
 
-4. Stop
-Stop `type: 40`
+#### 4. Stop
+Stop `type: 40` \
 ~Click to stop `type: 41`~
 
-5. Wait
+#### 5. Wait
 Wait X mins `type: 5`
 
-6. Turn on Source
-7. Turn off Source
-8. If Statement
+#### 6. Turn on Source
+#### 7. Turn off Source
+#### 8. If Statement
 
 # Documents
  - Bootstrap v5.1.3 [Documation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
