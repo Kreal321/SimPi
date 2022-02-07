@@ -39,7 +39,7 @@ Click to resume `type: 31`
 
 4. Stop
 Stop `type: 40`
-Click to resume `type: 31`
+~Click to stop `type: 41`~
 
 5. Wait
 Wait X mins `type: 5`
