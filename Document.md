@@ -29,13 +29,13 @@ The number of current connected clients
 Start `type: 10` \
 Click to start `type: 11`
 
-#### 2. Suspend
-Suspend `type: 20` \
-Click to suspend `type: 21`
+~#### 2. Suspend~
+~Suspend `type: 20` \~
+~Click to suspend `type: 21`~
 
-#### 3. Resume 
-Resume `type: 30` \
-Click to resume `type: 31`
+~#### 3. Resume ~
+~Resume `type: 30` \~
+~Click to resume `type: 31`~
 
 #### 4. Stop
 Stop `type: 40` \
@@ -43,6 +43,7 @@ Stop `type: 40` \
 
 #### 5. Wait
 Wait X mins `type: 5`
+Wait until X `type: 5X`
 
 #### 6. Turn on Source
 #### 7. Turn off Source

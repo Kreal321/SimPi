@@ -13,7 +13,7 @@ class SimpiController:
     def __init__(self, clients, data):
         """create a new Simpi class (and create a SimpiProcessController class)
         Args:
-            data (dictionary): 
+            data (array): 
         """
         self.connected_clients = clients
         self.SimpiProcessController = SimpiProcessController(data)
