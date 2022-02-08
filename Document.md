@@ -42,12 +42,18 @@ Stop `type: 40` \
 ~Click to stop `type: 41`~
 
 #### 5. Wait
-Wait X mins `type: 50`
+Wait X mins `type: 50` \
 Wait until X `type: 5X`
 
-#### 6. Turn on Source
-#### 7. Turn off Source
-#### 8. If Statement
+#### 6. Source
+Open Source `type: 61` \
+Close Source `type: 62`
+
+#### 7. If Statement
+If X `type: 7X` \
+End if `type: 70`
+
+#### 8. loop several times
 
 # Documents
  - Bootstrap v5.1.3 [Documation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)

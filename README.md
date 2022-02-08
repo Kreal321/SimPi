@@ -96,6 +96,9 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+### 2/8/2022
+- Change SimPi queue options
+
 ### 2/7/2022
 - Add Option class in server
 - Add shared signals array
