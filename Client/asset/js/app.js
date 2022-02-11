@@ -99,12 +99,15 @@ function optionToString(option){
         "40": "Stop",
         "41": "Click to stop",
         "51": "Wait until Sensor input high",
-        "52": "Wait until Source 2 is On"
+        "52": "Wait until Source 2 is On",
+        "52": "Wait until click button",
+        "61": "Open Source ",
+        "62": "Close Source "
     }
     if(option.type == "5"){
         return "Wait " + option.data[0] + " minutes";
     }else{
-        return optionList[option.type];
+        return optionList[option.type] + option.data[0];
     }
 }
 
@@ -127,17 +130,24 @@ function addToSimpiQueue(){
         case "3":
         case "4":
         case "5":
-            const selects = this.parentNode.getElementsByTagName("select")
+            var selects = this.parentNode.getElementsByTagName("select")
             simpiQueue.push({
                 type: type + selects[0].value,
-                data: []
+                data: [""]
             })
             break;
         case "50":
-            const inputs = this.parentNode.getElementsByTagName("input");
+            var inputs = this.parentNode.getElementsByTagName("input");
             simpiQueue.push({
                 type: 5,
                 data: [inputs[0].value]
+            })
+            break;
+        case "6":
+            var selects = this.parentNode.getElementsByTagName("select")
+            simpiQueue.push({
+                type: type + selects[0].value,
+                data: [selects[1].value]
             })
             break;
         default:
