@@ -1,6 +1,6 @@
 import json
 
-from simpiController import SimpiController, simpi
+from simpiController import SimpiController, simpi, signals
 
 from messager import Messager
 
@@ -36,8 +36,10 @@ async def decoding(ws, message):
                 await simpi.resume()
             else:
                 print("Warning: simpi process is not starting yet")
-        elif (message["type"] == 2):
-            pass
+        elif message['data'] == "change":
+            signals[0] = False
+    elif (message["type"] == 2):
+        pass
 
     
     print(f'Received from client{ws.remote_address}: {message}')

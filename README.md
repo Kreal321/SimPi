@@ -96,6 +96,12 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+### 2/11/2022
+- Add loop X times
+- Add open/close source
+- Add signals in server
+- Client now can send messages to child process
+
 ### 2/8/2022
 - Change SimPi queue options
 

@@ -22,6 +22,6 @@ def simpiProcess(data, signals):
     option = Option()
 
     for i in range(data):
-        print(f"Simpi is running: {i}")
+        print(f"Simpi is running: {i}, Signals: {signals[0]}")
         option.sleep(1)
 

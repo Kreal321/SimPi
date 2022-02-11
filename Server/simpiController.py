@@ -1,6 +1,6 @@
 import time
 
-from simpiProcessController import SimpiProcessController
+from simpiProcessController import SimpiProcessController, signals
 
 simpi = None
 
