@@ -18,13 +18,13 @@ class SimpiController:
         self.connected_clients = clients
         self.SimpiProcessController = SimpiProcessController(data)
 
-    async def turnOn(self, source):
-        # TODO
-        await self.connected_clients.send(f"Turn on {source}")
+    async def start(self):
+        """start Simpi
+        """
+        self.SimpiProcessController.start()
+        await self.connected_clients.send(f"Simpi is started")
+        print(f"Simpi is started")
 
-    async def turnOff(self, source):
-        # TODO
-        await self.connected_clients.send(f"Turn off {source}")
 
     async def wait(self, seconds: int):
         """Simpi wait

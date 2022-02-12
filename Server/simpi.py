@@ -20,10 +20,10 @@ def simpiProcess(data, signals):
     
     option = Option()
 
-    option.waitUntil(signals, 0)
+    # option.waitUntil(signals, 0)
 
-    # for i in range(data):
-    #     print(f"Simpi is running: {i}, Signals: {signals[0]}")
-    #     option.sleep(1)
-    
+    for i in range(data):
+        print(f"Simpi is running: {i}, Signals: {signals[0]}")
+        option.sleep(1)
+
 

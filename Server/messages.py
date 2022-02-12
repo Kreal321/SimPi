@@ -16,9 +16,9 @@ async def decoding(ws, message):
         elif message["data"] == "Start":
             # Start Simpi Process
             if(simpi):
-                print("Warning: simpi process is running")
+                await simpi.start()
             else:
-                simpi = SimpiController(connected_clients, 100)
+                print("Warning: simpi process is not initialized")
         elif message["data"] == "Stop":
             # Stop Simpi Process
             if(simpi):
@@ -39,7 +39,10 @@ async def decoding(ws, message):
         elif message['data'] == "change":
             signals[0] = False
     elif (message["type"] == 2):
-        pass
+        if(simpi):
+            print("Warning: simpi process is running")
+        else:
+            simpi = SimpiController(connected_clients, 100)
 
     
     print(f'Received from client{ws.remote_address}: {message}')

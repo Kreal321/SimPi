@@ -17,8 +17,15 @@ class SimpiProcessController:
             data (dictionary): 
         """
         self.process = multiprocessing.Process(target=simpiProcess, args=(data, signals))
-        self.process.start()
-        self.processutil = psutil.Process(self.process.pid)
+
+    def start(self):
+        if(self.processutil == None): 
+            self.process.start()
+            self.processutil = psutil.Process(self.process.pid)
+        else:
+            print(self.processutil.status())
+            print("Warning: the simpi process is already started")
+        
 
     def suspend(self):
         """suspend simpi process
