@@ -104,7 +104,7 @@ function optionToString(option){
         "61": "Open Source ",
         "62": "Close Source "
     }
-    if(option.type == "5"){
+    if(option.type == "50"){
         return "Wait " + option.data[0] + " minutes";
     }else{
         return optionList[option.type] + option.data[0];
@@ -139,7 +139,7 @@ function addToSimpiQueue(){
         case "50":
             var inputs = this.parentNode.getElementsByTagName("input");
             simpiQueue.push({
-                type: 5,
+                type: "50",
                 data: [inputs[0].value]
             })
             break;

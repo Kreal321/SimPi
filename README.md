@@ -97,7 +97,8 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 ## Change log
 ### 2/12/2022
-- Fix suspend and resume bugs
+- Fix suspend and resume bugsgit 
+- Server now can decode simpi queue
 
 ### 2/11/2022
 - Add loop X times

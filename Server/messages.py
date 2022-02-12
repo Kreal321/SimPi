@@ -42,7 +42,7 @@ async def decoding(ws, message):
         if(simpi):
             print("Warning: simpi process is running")
         else:
-            simpi = SimpiController(connected_clients, 100)
+            simpi = SimpiController(connected_clients, message["data"])
 
     
     print(f'Received from client{ws.remote_address}: {message}')
