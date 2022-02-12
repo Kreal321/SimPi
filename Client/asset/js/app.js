@@ -105,7 +105,7 @@ function optionToString(option){
         "62": "Close Source "
     }
     if(option.type == "50"){
-        return "Wait " + option.data[0] + " minutes";
+        return "Wait " + option.data[0] + " seconds";
     }else{
         return optionList[option.type] + option.data[0];
     }
