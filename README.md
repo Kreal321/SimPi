@@ -100,6 +100,7 @@ e.g. Connect to `127.0.0.1` if server is run locally
 - Fix suspend and resume bugs
 - Server now can decode simpi queue
 - Server can print Simpi Queue on screen
+- Add button display to queue on client side
 
 ### 2/11/2022
 - Add loop X times

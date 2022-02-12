@@ -91,16 +91,16 @@ document.getElementById("sendSimpiQ").addEventListener("click", () => {
 function optionToString(option){
     const optionList = {
         "10": "Start",
-        "11": "Click to start",
+        "11": '<button class="btn btn-outline-success">Click to start</button>',
         "20": "Suspend",
         "21": "Click to spspend",
         "30": "Resume",
         "31": "Click to resume",
         "40": "Stop",
-        "41": "Click to stop",
+        "41": '<button class="btn btn-outline-success">Click to stop</button>',
         "51": "Wait until Sensor input high",
         "52": "Wait until Source 2 is On",
-        "52": "Wait until click button",
+        "53": 'Wait until <button class="btn btn-outline-success">Click</button>',
         "61": "Open Source ",
         "62": "Close Source "
     }
@@ -115,8 +115,8 @@ function updateQueueDisplay(){
     const queue = document.getElementById("queue");
 
     var text = ""
-    simpiQueue.forEach((option) => {
-        text += optionToString(option) + "<br/>"
+    simpiQueue.forEach((option, idx) => {
+        text += (idx + 1) + ": " + optionToString(option) + "<br/>"
     })
     queue.innerHTML = text;
 }
