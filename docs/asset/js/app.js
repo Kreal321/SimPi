@@ -82,49 +82,72 @@ controllerBtns.forEach( (btn) => {
 });
 
 
+// SimPi Queue
 var simpiQueue = []
+document.getElementById("sendSimpiQ").addEventListener("click", () => {
+    sendMsg(simpiQueue, 2)
+})
+
+function optionToString(option){
+    const optionList = {
+        "10": "Start",
+        "11": '<button class="btn btn-outline-success">Click to start</button>',
+        "20": "Suspend",
+        "21": "Click to spspend",
+        "30": "Resume",
+        "31": "Click to resume",
+        "40": "Stop",
+        "41": '<button class="btn btn-outline-success">Click to stop</button>',
+        "51": "Wait until Sensor input high",
+        "52": "Wait until Source 2 is On",
+        "53": 'Wait until <button class="btn btn-outline-success">Click</button>',
+        "61": "Open Source ",
+        "62": "Close Source "
+    }
+    if(option.type == "50"){
+        return "Wait " + option.data[0] + " seconds";
+    }else{
+        return optionList[option.type] + option.data[0];
+    }
+}
 
 function updateQueueDisplay(){
     const queue = document.getElementById("queue");
+
     var text = ""
-    simpiQueue.forEach((option) => {
-        text += option.options[0] + "<br/>"
+    simpiQueue.forEach((option, idx) => {
+        text += (idx + 1) + ": " + optionToString(option) + "<br/>"
     })
     queue.innerHTML = text;
 }
 
 
 function addToSimpiQueue(){
-    switch(this.parentNode.getAttribute('simpiType')){
+    const type = this.parentNode.getAttribute('simpiType');
+    switch(type){
         case "1":
-            simpiQueue.push({
-                type: 1,
-                options: ["Click to start"]
-            })
-            break;
         case "2":
-            simpiQueue.push({
-                type: 2,
-                options: ["Suspend"]
-            })
-            break;
         case "3":
-            simpiQueue.push({
-                type: 3,
-                options: ["Click to resume"]
-            })
-            break;
         case "4":
+        case "5":
+            var selects = this.parentNode.getElementsByTagName("select")
             simpiQueue.push({
-                type: 4,
-                options: ["Resume"]
+                type: type + selects[0].value,
+                data: [""]
             })
             break;
-        case "5":
-            const inputs = this.parentNode.getElementsByTagName("input");
+        case "50":
+            var inputs = this.parentNode.getElementsByTagName("input");
             simpiQueue.push({
-                type: 5,
-                options: ["Wait " + inputs[0].value + " minutes", inputs[0].value]
+                type: "50",
+                data: [inputs[0].value]
+            })
+            break;
+        case "6":
+            var selects = this.parentNode.getElementsByTagName("select")
+            simpiQueue.push({
+                type: type + selects[0].value,
+                data: [selects[1].value]
             })
             break;
         default:
