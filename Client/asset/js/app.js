@@ -70,7 +70,10 @@ function sendMsg(data, type = 1){
 
 function send(){
     sendMsg(inputbox.value);
+}
 
+function simpiStartBtn(){
+    sendMsg("change");
 }
 
 const controllerBtns = document.getElementById("controller-btns").childNodes
@@ -91,7 +94,7 @@ document.getElementById("sendSimpiQ").addEventListener("click", () => {
 function optionToString(option){
     const optionList = {
         "10": "Start",
-        "11": '<button class="btn btn-outline-success">Click to start</button>',
+        "11": '<button class="btn btn-outline-success" onclick="simpiStartBtn()">Click to start</button>',
         "20": "Suspend",
         "21": "Click to spspend",
         "30": "Resume",

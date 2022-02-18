@@ -20,8 +20,6 @@ def optionToString(option):
         return "Wait " + option["data"][0] + " seconds"
     else:
         return optionList[option["type"]] + option["data"][0]
-    
-
 
 class SimpiQ:
     queue = []
@@ -36,11 +34,11 @@ class SimpiQ:
     def hasNext(self) -> bool:
         return self.size() > self.idx
 
-    def next(self):
+    def pop(self):
         self.idx += 1
         return self.queue[self.idx - 1]
 
-    def current(self) -> int:
+    def front(self) -> int:
         return self.idx + 1
 
     def waitUntil(self, signals, idx):
@@ -51,14 +49,23 @@ class SimpiQ:
 
     def sleep(self, sec:int):
         time.sleep(sec)
-    
 
 def simpiProcess(data, signals):
     
     simpi = SimpiQ(data)
 
+    print(f"Received Simpi Queue:")
+    for item in data:
+        print(f"{optionToString(item)}")
+
     while(simpi.hasNext()):
-        print(f"{simpi.current()}: {optionToString(simpi.next())}")
+        current = simpi.pop()
+        if(current["type"] == "10"):
+            print("Simpi start running.")
+        if(current["type"] == "11"):
+            print("Simpi is waiting start buttun signal to start running.")
+            simpi.waitUntil(signals, 0)
+        
 
     print("Simpi finished")
 
