@@ -99,6 +99,7 @@ e.g. Connect to `127.0.0.1` if server is run locally
 ### 2/28/2022
 - Executable Start button
 - Simpi server side queue redesign
+- Executable Waituntil button
 
 ### 2/13/2022
 - Update doc

@@ -36,7 +36,7 @@ async def decoding(ws, message):
                 await simpi.resume()
             else:
                 print("Warning: simpi process is not starting yet")
-        elif message['data'] == "change":
+        elif message['data'] == "signal":
             signals[0] = False
     elif (message["type"] == 2):
         if(simpi):

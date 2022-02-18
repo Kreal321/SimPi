@@ -72,8 +72,8 @@ function send(){
     sendMsg(inputbox.value);
 }
 
-function simpiStartBtn(){
-    sendMsg("change");
+function signalBtn(){
+    sendMsg("signal");
 }
 
 const controllerBtns = document.getElementById("controller-btns").childNodes
@@ -94,7 +94,7 @@ document.getElementById("sendSimpiQ").addEventListener("click", () => {
 function optionToString(option){
     const optionList = {
         "10": "Start",
-        "11": '<button class="btn btn-outline-success" onclick="simpiStartBtn()">Click to start</button>',
+        "11": '<button class="btn btn-outline-success" onclick="signalBtn()">Click to start</button>',
         "20": "Suspend",
         "21": "Click to spspend",
         "30": "Resume",
@@ -103,7 +103,7 @@ function optionToString(option){
         "41": '<button class="btn btn-outline-success">Click to stop</button>',
         "51": "Wait until Sensor input high",
         "52": "Wait until Source 2 is On",
-        "53": 'Wait until <button class="btn btn-outline-success">Click</button>',
+        "53": 'Wait until <button class="btn btn-outline-success" onclick="signalBtn()">Click</button>',
         "61": "Open Source ",
         "62": "Close Source "
     }

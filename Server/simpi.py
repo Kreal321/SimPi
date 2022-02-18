@@ -12,7 +12,7 @@ def optionToString(option):
         "41": "Click to stop",
         "51": "Wait until Sensor input high",
         "52": "Wait until Source 2 is On",
-        "52": "Wait until click button",
+        "53": "Wait until click button",
         "61": "Open Source ",
         "62": "Close Source "
     }
@@ -38,7 +38,7 @@ class SimpiQ:
         self.idx += 1
         return self.queue[self.idx - 1]
 
-    def front(self) -> int:
+    def currentIdx(self) -> int:
         return self.idx + 1
 
     def waitUntil(self, signals, idx):
@@ -47,7 +47,7 @@ class SimpiQ:
             print(f"Simpi is waiting signal")
             time.sleep(1)
 
-    def sleep(self, sec:int):
+    def wait(self, sec:int):
         time.sleep(sec)
 
 def simpiProcess(data, signals):
@@ -57,14 +57,22 @@ def simpiProcess(data, signals):
     print(f"Received Simpi Queue:")
     for item in data:
         print(f"{optionToString(item)}")
+    print(f"--------------------------")
+
 
     while(simpi.hasNext()):
         current = simpi.pop()
+        print(f"{simpi.currentIdx() - 1}: {optionToString(current)}")
         if(current["type"] == "10"):
             print("Simpi start running.")
         if(current["type"] == "11"):
             print("Simpi is waiting start buttun signal to start running.")
             simpi.waitUntil(signals, 0)
+        if(current["type"] == "53"):
+            print("Simpi is waiting buttun signal to continue running.")
+            simpi.waitUntil(signals, 0)
+        if(current["type"] == "50"):
+            simpi.wait(int(current["data"][0]))
         
 
     print("Simpi finished")
