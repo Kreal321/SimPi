@@ -55,6 +55,19 @@ End if `type: 70`
 
 #### 8. loop several times
 
-# Documents
+## Raspberry Pi GPIO
+- Pin 3 = 110B
+- Pin 2 = 110A
+- Pin 4 = 110C
+- Pin 17 =110D
+- Pin 27 = 5VA
+- Pin 22 = 5VB
+- Pin 10 = 12VA
+- Pin 9 = switch
+- Pin 11 = Falling Input
+
+
+## Documents
  - Bootstrap v5.1.3 [Documation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
- - websockets  Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
+ - websockets Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
+ - Raspberry Pi GPIO: [Python]( https://sourceforge.net/p/raspberry-gpio-python/wiki/browse_pages/)

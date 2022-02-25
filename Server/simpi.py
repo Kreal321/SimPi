@@ -1,4 +1,8 @@
 import time
+try:
+    import RPi.GPIO as GPIO
+except ImportError:
+    print(f"ERROR: GPIO package is not imported.")
 
 def optionToString(option):
     optionList = {
