@@ -103,6 +103,7 @@ e.g. Connect to `127.0.0.1` if server is run locally
 ## Change log
 ### 2/24/2022
 - Import Raspberry Pi GPIO
+- Set up testing for GPIO
 
 ### 2/18/2022
 - Executable Start button

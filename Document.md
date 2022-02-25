@@ -66,6 +66,16 @@ End if `type: 70`
 - Pin 9 = switch
 - Pin 11 = Falling Input
 
+### Testing
+```
+try
+low1
+high1
+```
+
+## Raspberry pi
+User name: Pi
+Password: raspberry
 
 ## Documents
  - Bootstrap v5.1.3 [Documation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
