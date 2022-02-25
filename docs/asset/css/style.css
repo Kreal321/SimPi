@@ -89,3 +89,71 @@ h1, h2, h3, h4, h5, h6 {
 .btn:hover{
     color: #fff !important
 }
+
+.text-outline-success{
+    color: #2dce89;
+    border-color: #2dce89;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid #2dce89;
+    padding: 0.625rem 1.25rem;
+    font-size: .875rem;
+    border-radius: 0.5rem;
+    transition: all .15s ease-in;
+}
+
+/* Flowchart */
+.flowchart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flowchart svg {
+  height: 3rem;
+}
+.flowchart svg line {
+  stroke: #3fcf91;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-dasharray: 2px 20px;
+  animation: animateline 5s linear both infinite;
+}
+
+@-moz-keyframes animateline {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -3rem;
+  }
+}
+@-webkit-keyframes animateline {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -3rem;
+  }
+}
+@-o-keyframes animateline {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -3rem;
+  }
+}
+@keyframes animateline {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -3rem;
+  }
+}
