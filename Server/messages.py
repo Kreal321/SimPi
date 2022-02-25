@@ -55,6 +55,11 @@ async def decoding(ws, message):
                     GPIO.output(i, GPIO.HIGH)
                 except:
                     print(f"ERROR: GPIO port {i} setting up failed.")
+        elif message['data'] == "cleanup":
+            try:
+               GPIO.cleanup()
+            except:
+                print(f"ERROR: GPIO clean up failed.")
         elif message['data'][0:3] == "low":
             try:
                GPIO.output(int(message['data'][3:4]), GPIO.LOW)
