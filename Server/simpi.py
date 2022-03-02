@@ -19,7 +19,11 @@ def optionToString(option):
         "52": "Wait until Source 2 is On",
         "53": "Wait until click button",
         "61": "Open Source ",
-        "62": "Close Source "
+        "62": "Close Source ",
+        "71": "Play Audio ",
+        "72": "Pause Audio ",
+        "73": "Resume Audio ",
+        "74": "Stop Audio ",
     }
     if(option["type"] == "50"):
         return "Wait " + option["data"][0] + " seconds"
