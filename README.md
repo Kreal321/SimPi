@@ -110,6 +110,8 @@ e.g. Connect to `127.0.0.1` if server is run locally
 - Add audio option for simpi option
 - Add aduio for server
 - Import mpg123
+- Add server audio class
+- Add server audio support
 
 ### 2/25/2022
 - Test hardware connection

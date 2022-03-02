@@ -92,6 +92,8 @@ def simpiProcess(data, signals):
             simpi.wait(int(current["data"][0]))
         if(current["type"] == "71"):
             simpi.playAudio(current["data"][0])
+        if(current["type"] == "72"):
+            simpi.pauseAudio(current["data"][0])
         
 
     print("Simpi finished")
