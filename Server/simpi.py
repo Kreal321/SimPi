@@ -33,6 +33,7 @@ def optionToString(option):
 class SimpiQ:
     queue = []
     idx = 0
+    audios = {}
 
     def __init__(self, data) -> None:
         self.queue = data
@@ -59,6 +60,13 @@ class SimpiQ:
     def wait(self, sec:int):
         time.sleep(sec)
 
+    def playAudio(self, file):
+        self.audios[file] = Audio(file)
+        self.audios[file].start()
+
+    def pauseAudio(self, file):
+        self.audios[file].pause()
+
 def simpiProcess(data, signals):
     
     simpi = SimpiQ(data)
@@ -83,8 +91,7 @@ def simpiProcess(data, signals):
         if(current["type"] == "50"):
             simpi.wait(int(current["data"][0]))
         if(current["type"] == "71"):
-            player = Audio(current["data"][0])
-            player.start()
+            simpi.playAudio(current["data"][0])
         
 
     print("Simpi finished")

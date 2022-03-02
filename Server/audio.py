@@ -21,7 +21,7 @@ class Audio:
             print("Warning: this audio process is already started")
         
 
-    def suspend(self):
+    def pause(self):
         """suspend simpi process
         """
         if(self.processutil.status() == "running" or self.processutil.status() == "sleeping"): 
