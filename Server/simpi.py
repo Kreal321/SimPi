@@ -73,13 +73,13 @@ class SimpiQ:
 
     def turnOn(self, port):
         try:
-            GPIO.output(port, GPIO.LOW)
+            GPIO.output(int(port), GPIO.LOW)
         except:
             print(f"ERROR: GPIO port {port} set low failed.")
 
     def turnOff(self, port):
         try:
-            GPIO.output(port, GPIO.HIGH)
+            GPIO.output(int(port), GPIO.HIGH)
         except:
             print(f"ERROR: GPIO port {port} set high failed.")    
 
