@@ -36,7 +36,7 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"Warning: {e}")
 
-    os.system("mpg123 Server\\Sources\\test.mp3")
+    os.system("mpg123 Server/Sources/test.mp3")
 
     # Start server
     server = websockets.serve(handler, ip, 80, ping_timeout=None)
