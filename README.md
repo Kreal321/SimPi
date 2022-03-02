@@ -101,6 +101,12 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+### 3/1/2022
+- Test audio
+
+### 2/25/2022
+- Test hardware connection
+
 ### 2/24/2022
 - Import Raspberry Pi GPIO
 - Set up testing for GPIO
