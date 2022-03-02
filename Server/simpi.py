@@ -67,6 +67,9 @@ class SimpiQ:
     def pauseAudio(self, file):
         self.audios[file].pause()
 
+    def stopAudio(self, file):
+        self.audios[file].kill()
+
 def simpiProcess(data, signals):
     
     simpi = SimpiQ(data)
@@ -92,8 +95,8 @@ def simpiProcess(data, signals):
             simpi.wait(int(current["data"][0]))
         if(current["type"] == "71"):
             simpi.playAudio(current["data"][0])
-        if(current["type"] == "72"):
-            simpi.pauseAudio(current["data"][0])
+        if(current["type"] == "74"):
+            simpi.stopAudio(current["data"][0])
         
 
     print("Simpi finished")
