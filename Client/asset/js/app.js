@@ -105,7 +105,11 @@ function optionToString(option){
         "52": "Wait until Source 2 is On",
         "53": 'Wait until <button class="btn btn-outline-success" onclick="signalBtn()">Click</button>',
         "61": "Open Source ",
-        "62": "Close Source "
+        "62": "Close Source ",
+        "71": "Play Audio ",
+        "72": "Pause Audio ",
+        "73": "Resume Audio ",
+        "74": "Stop Audio ",
     }
     if(option.type == "50"){
         return "Wait " + option.data[0] + " seconds";
@@ -151,6 +155,14 @@ function addToSimpiQueue(){
             simpiQueue.push({
                 type: type + selects[0].value,
                 data: [selects[1].value]
+            })
+            break;
+        case "7":
+            var selects = this.parentNode.getElementsByTagName("select")
+            var inputs = this.parentNode.getElementsByTagName("input");
+            simpiQueue.push({
+                type: type + selects[0].value,
+                data: [inputs[0].value]
             })
             break;
         default:

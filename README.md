@@ -107,6 +107,9 @@ e.g. Connect to `127.0.0.1` if server is run locally
 ## Change log
 ### 3/1/2022
 - Test audio
+- Add audio option for simpi option
+- Add aduio for server
+- Import mpg123
 
 ### 2/25/2022
 - Test hardware connection

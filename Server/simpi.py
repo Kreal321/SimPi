@@ -1,4 +1,5 @@
 import time
+from audio import Audio
 try:
     import RPi.GPIO as GPIO
 except ImportError:
@@ -77,6 +78,9 @@ def simpiProcess(data, signals):
             simpi.waitUntil(signals, 0)
         if(current["type"] == "50"):
             simpi.wait(int(current["data"][0]))
+        if(current["type"] == "71"):
+            player = Audio(current["data"][0])
+            player.start()
         
 
     print("Simpi finished")

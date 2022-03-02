@@ -45,4 +45,4 @@ class Audio:
         self.process.kill()
 
 def audioProcess(data):
-    os.system("mpg123 Server/Sources/test.mp3")
+    os.system("mpg123 Server/Sources/" + data + ".mp3")

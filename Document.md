@@ -49,11 +49,14 @@ Wait until X `type: 5X`
 Open Source `type: 61` \
 Close Source `type: 62`
 
-#### 7. If Statement
-If X `type: 7X` \
-End if `type: 70`
+#### 7. Audio
+Play Audio `type: 71`
 
-#### 8. loop several times
+#### 8. If Statement
+If X `type: 8X` \
+End if `type: 80`
+
+#### 9. loop several times
 
 ## Raspberry Pi GPIO
 - Pin 3 = 110B
