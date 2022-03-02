@@ -37,6 +37,17 @@ class SimpiQ:
 
     def __init__(self, data) -> None:
         self.queue = data
+        try:
+            GPIO.setmode(GPIO.BCM)
+        except:
+                print(f"ERROR: GPIO set mode failed.")
+    
+        for i in [2, 3, 4, 17, 27, 22, 10, 9]:
+            try:
+                GPIO.setup(i, GPIO.OUT)
+                GPIO.output(i, GPIO.HIGH)
+            except:
+                print(f"ERROR: GPIO port {i} setting up failed.")
 
     def size(self) -> int:
         return len(self.queue)
@@ -59,6 +70,18 @@ class SimpiQ:
 
     def wait(self, sec:int):
         time.sleep(sec)
+
+    def turnOn(self, port):
+        try:
+            GPIO.output(port, GPIO.LOW)
+        except:
+            print(f"ERROR: GPIO port {port} set low failed.")
+
+    def turnOff(self, port):
+        try:
+            GPIO.output(port, GPIO.HIGH)
+        except:
+            print(f"ERROR: GPIO port {port} set high failed.")    
 
     def playAudio(self, file):
         self.audios[file] = Audio(file)
@@ -93,6 +116,10 @@ def simpiProcess(data, signals):
             simpi.waitUntil(signals, 0)
         if(current["type"] == "50"):
             simpi.wait(int(current["data"][0]))
+        if(current["type"] == "61"):
+            simpi.turnOn(current["data"][0])
+        if(current["type"] == "62"):
+            simpi.turnOff(current["data"][0])
         if(current["type"] == "71"):
             simpi.playAudio(current["data"][0])
         if(current["type"] == "74"):

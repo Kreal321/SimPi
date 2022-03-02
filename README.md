@@ -105,6 +105,10 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+### 3/3/2022
+- Fix GPIO Ports bugs
+- Add GPIO Ports support on server
+
 ### 3/1/2022
 - Test audio
 - Add audio option for simpi option

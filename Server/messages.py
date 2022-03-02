@@ -43,33 +43,11 @@ async def decoding(ws, message):
                 print("Warning: simpi process is not starting yet")
         elif message['data'] == "signal":
             signals[0] = False
-        elif message['data'] == "try":
-            try:
-                GPIO.setmode(GPIO.BCM)
-            except:
-                    print(f"ERROR: GPIO set mode failed.")
-       
-            for i in [2, 3, 4, 17, 27, 22, 10, 9]:
-                try:
-                    GPIO.setup(i, GPIO.OUT)
-                    GPIO.output(i, GPIO.HIGH)
-                except:
-                    print(f"ERROR: GPIO port {i} setting up failed.")
         elif message['data'] == "cleanup":
             try:
                GPIO.cleanup()
             except:
                 print(f"ERROR: GPIO clean up failed.")
-        elif message['data'][0:3] == "low":
-            try:
-               GPIO.output(int(message['data'][3:4]), GPIO.LOW)
-            except:
-                print(f"ERROR: GPIO port {message['data'][3:4]} set low failed.")
-        elif message['data'][0:4] == "high":
-            try:
-               GPIO.output(int(message['data'][4:5]), GPIO.HIGH)
-            except:
-                print(f"ERROR: GPIO port {message['data'][4:5]} set high failed.")
 
     elif (message["type"] == 2):
         if(simpi):
