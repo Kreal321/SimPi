@@ -5,9 +5,6 @@ import websockets
 
 from messages import connected_clients
 
-from audio import Audio
-
-
 # For each WebSocket connection
 async def handler(ws, path):
     """websocket
@@ -34,9 +31,6 @@ if __name__ == '__main__':
 
     except Exception as e:
         print(f"Warning: {e}")
-
-    player = Audio("test")
-    player.start()
 
     # Start server
     server = websockets.serve(handler, ip, 80, ping_timeout=None)
