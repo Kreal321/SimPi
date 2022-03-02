@@ -58,6 +58,10 @@ Install `Raspberry Pi GPIO`
 ```
 sudo apt-get install -y rpi.gpio
 ```
+Install `mpg123`
+```
+sudo apt-get install -y mpg123
+```
 
 
 Check python version
