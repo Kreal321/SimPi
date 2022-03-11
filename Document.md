@@ -17,6 +17,8 @@ Queue of actions
 ### Type 3: Multi-client management
 The number of current connected clients
 
+### Type 4: debug message from server
+Display on console
 
 ## SimPi Queue Options
 ```

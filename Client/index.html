@@ -40,13 +40,11 @@
                     <div class="card-body p-3">
 
                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Server Connection</p>
-                        <h5 class="font-weight-bolder text-danger">Not connected</h5>
+                        <h5 class="font-weight-bolder" id="connectStatus">Not connected</h5>
                         <div class="input-group mb-0">
-                            <input type="text" class="form-control" placeholder="Server IP Address" id="ip">
-                            <button class="btn btn-outline-primary mb-0" id="ipBtn">Connect</button>
+                            <input type="text" class="form-control" placeholder="Server IP Address" id="ip" value="192.168.0.100">
+                            <button class="btn btn-outline-primary mb-0" id="connectBtn">Auto Connect</button>
                         </div>
-
-                        
                     </div>
                 </div>
             </div>
@@ -55,9 +53,8 @@
             <div class="col-lg-8 col-12">
                 <div class="card mb-4">
                     <div class="card-body p-3">
-
                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Server Controller</p>
-                        <h5 class="font-weight-bolder text-danger">Not connected</h5>
+                        <h5 class="font-weight-bolder">Used for testing and debuging</h5>
                         <div class="input-group ">
                             <input type="text" class="form-control" placeholder="Messages" id="text">
                             <button class="btn btn-outline-primary " onclick="send()" id="ipBtn">Send</button>
@@ -72,9 +69,7 @@
             <div class="col-lg-8 col-12">
                 <div class="card mb-4">
                     <div class="card-body p-3">
-
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">SimPi Controller</p>
-                        <h5 class="font-weight-bolder text-danger">Not connected</h5>
+                        <p class="text-sm text-uppercase font-weight-bold">SimPi Controller</p>
                         <div class="input-group " id="controller-btns">
                             <button class="btn btn-outline-primary">Start</button>
                             <button class="btn btn-outline-primary">Suspend</button>

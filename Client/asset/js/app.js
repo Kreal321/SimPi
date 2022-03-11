@@ -13,26 +13,44 @@ function log(str, error = false){
 
 
 // create new websocket connection
-var ip = "";
-var ws = null;
-document.getElementById("ipBtn").addEventListener("click", ()=>{
+function autoConnect() {
     ip = document.getElementById("ip").value;
+    connectStatus = document.getElementById("connectStatus");
+   
     ws = new WebSocket("ws://" + ip + ":80/");
+    connectStatus.innerText = "Connecting";
+        
+    ws.addEventListener('open', (event)=>{
+        connectStatus.classList.remove("text-danger");
+        connectStatus.classList.add("text-success");
+        connectStatus.innerText = "Connected";
+    });
+    ws.addEventListener('error', (event)=>{
+        connectStatus.classList.remove("text-success");
+        connectStatus.classList.add("text-danger");
+        connectStatus.innerText = "Failed to connect";
+    })
     // Receive a new message
     ws.addEventListener('message', (event)=>{
         var msg = JSON.parse(event.data)
         if (msg.type == 0) {
-            addMsg("Message received: " + msg['data']);
+            addMsg(msg['data']);
             log("Info: Message received from server: " + msg['data']);
         } else if (msg.type == 3) {
             if (msg.data > 1){
                 document.getElementById("alert").classList.remove("d-none")
             }
+        } else if (msg.type == 4) {
+            log("Info: Message received from server: " + msg['data']);
         }
         
 
     })
-})
+}
+
+var ip = "";
+var ws = null;
+document.getElementById("connectBtn").addEventListener("click", autoConnect)
 
 
 
@@ -60,7 +78,6 @@ function sendMsg(data, type = 1){
     try {
         msg = {data: data, type: type}
         ws.send(JSON.stringify(msg));
-        addMsg("<br/>Message sent: " + data);
         log("Message send to server: " + data);
     } catch (error) {
         document.getElementById("h").innerHTML= stuff;

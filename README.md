@@ -107,6 +107,10 @@ e.g. Connect to `127.0.0.1` if server is run locally
 ## Change log
 ### 3/10/2022
 - Add server to start up
+- Connection redesign
+- Add auto connection
+- Messages redesign
+- Add debug messages
 
 ### 3/8/2022
 - Fix putty connection time out

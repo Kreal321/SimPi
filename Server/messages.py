@@ -57,7 +57,7 @@ async def decoding(ws, message):
 
     
     print(f'Received from client{ws.remote_address}: {message}')
-    await connected_clients.send(f"Server has received a message [{message}]")
+    await connected_clients.send(f"Server has received a message [{message}]", debug=True)
 
 def encoding(data, type = 0):
     msg = {"data": data, "type": type}
