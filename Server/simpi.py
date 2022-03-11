@@ -34,11 +34,9 @@ class SimpiQ:
     queue = []
     idx = 0
     audios = {}
-    connected_clients = []
 
-    def __init__(self, data, clients) -> None:
+    def __init__(self, data) -> None:
         self.queue = data
-        self.connected_clients = clients
         try:
             GPIO.setmode(GPIO.BCM)
         except:
@@ -64,11 +62,10 @@ class SimpiQ:
     def currentIdx(self) -> int:
         return self.idx + 1
 
-    async def waitUntil(self, signals, idx):
+    def waitUntil(self, signals, idx):
         signals[idx] = True
         while(signals[idx]):
             print(f"Simpi is waiting signal")
-            await self.connected_clients.send(f"Simpi is waiting signal")
             time.sleep(1)
 
     def wait(self, sec:int):
@@ -96,9 +93,9 @@ class SimpiQ:
     def stopAudio(self, file):
         self.audios[file].kill()
 
-async def simpiProcess(data, signals, connected_clients):
+def simpiProcess(data, signals):
     
-    simpi = SimpiQ(data, connected_clients)
+    simpi = SimpiQ(data)
 
     print(f"Received Simpi Queue:")
     for item in data:
@@ -113,7 +110,7 @@ async def simpiProcess(data, signals, connected_clients):
             print("Simpi start running.")
         if(current["type"] == "11"):
             print("Simpi is waiting start buttun signal to start running.")
-            await simpi.waitUntil(signals, 0)
+            simpi.waitUntil(signals, 0)
         if(current["type"] == "53"):
             print("Simpi is waiting buttun signal to continue running.")
             simpi.waitUntil(signals, 0)
@@ -136,5 +133,3 @@ async def simpiProcess(data, signals, connected_clients):
     # for i in range(data):
     #     print(f"Simpi is running: {i}, Signals: {signals[0]}")
     #     option.sleep(1)
-
-

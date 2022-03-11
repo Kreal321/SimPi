@@ -11,12 +11,12 @@ class SimpiProcessController:
     process = None
     processutil = None
 
-    def __init__(self, data, connected_clients):
+    def __init__(self, data):
         """create a new simpi process
         Args:
             data (dictionary): 
         """
-        self.process = multiprocessing.Process(target=simpiProcess, args=(data, signals, connected_clients))
+        self.process = multiprocessing.Process(target=simpiProcess, args=(data, signals))
 
     def start(self):
         if(self.processutil == None): 
@@ -49,4 +49,3 @@ class SimpiProcessController:
         """kill simpi process
         """
         self.process.kill()
-

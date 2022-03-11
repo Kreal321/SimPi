@@ -16,7 +16,7 @@ class SimpiController:
             data (array): 
         """
         self.connected_clients = clients
-        self.SimpiProcessController = SimpiProcessController(data, clients)
+        self.SimpiProcessController = SimpiProcessController(data)
 
     async def start(self):
         """start Simpi
