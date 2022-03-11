@@ -105,6 +105,15 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+### 3/10/2022
+- Add server to start up
+
+### 3/8/2022
+- Fix putty connection time out
+
+### 3/4/2022
+- Test audio on simpi box
+
 ### 3/3/2022
 - Fix GPIO Ports bugs
 - Add GPIO Ports support on server
