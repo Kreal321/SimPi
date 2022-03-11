@@ -84,3 +84,31 @@ Password: raspberry
  - Bootstrap v5.1.3 [Documation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
  - websockets Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
  - Raspberry Pi GPIO: [Python]( https://sourceforge.net/p/raspberry-gpio-python/wiki/browse_pages/)
+
+## TP-Link
+Model No. TL-WR802N \
+Set as client mode.
+```
+Default:
+SSID: TP-Link_7610
+Wifi Password: 85313415
+
+Now:
+SSID: TP-Link_7610
+Wifi Password: simpibox
+
+Manage Page
+Page: tplinkwifi.net
+Password: simpibox2022
+```
+
+## Raspberry Pi start up
+Edit start up
+```
+sudo crontab -e
+```
+
+Add command line
+```
+@reboot sudo /home/pi/Desktop/simpi.py > log.txt &
+```
