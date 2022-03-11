@@ -64,11 +64,11 @@ class SimpiQ:
     def currentIdx(self) -> int:
         return self.idx + 1
 
-    def waitUntil(self, signals, idx):
+    async def waitUntil(self, signals, idx):
         signals[idx] = True
         while(signals[idx]):
             print(f"Simpi is waiting signal")
-            self.connected_clients.send(f"Simpi is waiting signal")
+            await self.connected_clients.send(f"Simpi is waiting signal")
             time.sleep(1)
 
     def wait(self, sec:int):
