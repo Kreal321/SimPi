@@ -103,7 +103,7 @@ controllerBtns.forEach( (btn) => {
 
 
 // SimPi Queue
-var simpiQueue = []
+var simpiQueue = [];
 document.getElementById("sendSimpiQ").addEventListener("click", () => {
     sendMsg(simpiQueue, 2)
 })
@@ -196,3 +196,9 @@ for (let i = 0; i < simpiOptions.length; i++) {
     simpiOptions[i].addEventListener("click", addToSimpiQueue)
 }
 
+// Test
+autoConnect();
+simpiQueue = [{"type":"10","data":[""]},{"type":"61","data":["3"]},{"type":"61","data":["5"]},{"type":"61","data":["13"]},{"type":"40","data":[""]}];
+updateQueueDisplay();
+sendMsg(simpiQueue, 2);
+sendMsg("Start");
