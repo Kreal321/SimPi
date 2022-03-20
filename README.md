@@ -105,6 +105,10 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+### 3/20/2022
+- Update GPIO ports
+
+
 ### 3/10/2022
 - Add server to start up
 - Connection redesign

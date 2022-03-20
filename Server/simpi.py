@@ -18,8 +18,8 @@ def optionToString(option):
         "51": "Wait until Sensor input high",
         "52": "Wait until Source 2 is On",
         "53": "Wait until click button",
-        "61": "Open Source ",
-        "62": "Close Source ",
+        "61": "On Port ",
+        "62": "Off Port ",
         "71": "Play Audio ",
         "72": "Pause Audio ",
         "73": "Resume Audio ",
@@ -42,7 +42,7 @@ class SimpiQ:
         except:
                 print(f"ERROR: GPIO set mode failed.")
     
-        for i in [2, 3, 4, 17, 27, 22, 10, 9]:
+        for i in [3, 5, 7, 11, 19, 13, 15, 21, 29, 31, 33, 35]:
             try:
                 GPIO.setup(i, GPIO.OUT)
                 GPIO.output(i, GPIO.HIGH)
