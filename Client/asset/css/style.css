@@ -107,6 +107,16 @@ h1, h2, h3, h4, h5, h6 {
     transition: all .15s ease-in;
 }
 
+.flowchart .text-outline-success.grey{
+  color: #8392ab;
+  border-color: #8392ab;
+  border: 1px solid #8392ab;
+}
+
+.flowchart svg.grey line {
+  stroke: #8392ab;
+}
+
 /* Flowchart */
 .flowchart{
     display: flex;
@@ -124,6 +134,8 @@ h1, h2, h3, h4, h5, h6 {
   stroke-dasharray: 2px 20px;
   animation: animateline 5s linear both infinite;
 }
+
+
 
 @-moz-keyframes animateline {
   from {
