@@ -1,5 +1,7 @@
 import time
+import asyncio
 from audio import Audio
+
 try:
     import RPi.GPIO as GPIO
 except ImportError:
@@ -104,16 +106,17 @@ def simpiProcess(data, signals):
 
 
     while(simpi.hasNext()):
+        signals[0] += 1
         current = simpi.pop()
         print(f"{simpi.currentIdx() - 1}: {optionToString(current)}")
         if(current["type"] == "10"):
             print("Simpi start running.")
         if(current["type"] == "11"):
             print("Simpi is waiting start buttun signal to start running.")
-            simpi.waitUntil(signals, 0)
+            simpi.waitUntil(signals, 1)
         if(current["type"] == "53"):
             print("Simpi is waiting buttun signal to continue running.")
-            simpi.waitUntil(signals, 0)
+            simpi.waitUntil(signals, 1)
         if(current["type"] == "50"):
             simpi.wait(int(current["data"][0]))
         if(current["type"] == "61"):
@@ -127,9 +130,3 @@ def simpiProcess(data, signals):
         
 
     print("Simpi finished")
-
-    # option.waitUntil(signals, 0)
-
-    # for i in range(data):
-    #     print(f"Simpi is running: {i}, Signals: {signals[0]}")
-    #     option.sleep(1)

@@ -42,12 +42,14 @@ async def decoding(ws, message):
             else:
                 print("Warning: simpi process is not starting yet")
         elif message['data'] == "signal":
-            signals[0] = False
+            signals[1] = False
         elif message['data'] == "cleanup":
             try:
                GPIO.cleanup()
             except:
                 print(f"ERROR: GPIO clean up failed.")
+        elif message['data'] == "now":
+            await connected_clients.send(f"{signals[0]}", status = True)
 
     elif (message["type"] == 2):
         if(simpi):

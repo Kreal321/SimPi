@@ -20,6 +20,9 @@ The number of current connected clients
 ### Type 4: debug message from server
 Display on console
 
+### Type 5: simpi status
+Simpi status
+
 ## SimPi Queue Options
 ```
 {

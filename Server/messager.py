@@ -13,7 +13,7 @@ class Messager:
         print(f'A client just connected {ws.remote_address}')
         self.clients.add(ws)
 
-    async def send(self, message: str, client = None, debug = False):
+    async def send(self, message: str, client = None, debug = False, status = False):
         """Send message to clients/client
         Args:
             msg (str): message to send
@@ -22,6 +22,10 @@ class Messager:
         if debug:
             for c in self.clients:
                 await c.send(msg.encoding(message, 4))
+
+        if status:
+            for c in self.clients:
+                await c.send(msg.encoding(message, 5))
 
         if client:
             await client.send(msg.encoding(message))

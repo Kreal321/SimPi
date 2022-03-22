@@ -42,6 +42,8 @@ function autoConnect() {
             }
         } else if (msg.type == 4) {
             log("Info: Message received from server: " + msg['data']);
+        } else if (msg.type == 5) {
+            simpiStatus = msg['data'];
         }
         
 
@@ -52,7 +54,7 @@ var ip = "";
 var ws = null;
 document.getElementById("connectBtn").addEventListener("click", autoConnect)
 
-
+var simpiStatus = 0;
 
 const inputbox = document.getElementById("text");
 const checkbox = document.getElementById("check");
@@ -98,6 +100,7 @@ const controllerBtns = document.getElementById("controller-btns").childNodes
 controllerBtns.forEach( (btn) => {
     btn.addEventListener('click', (e) => {
         sendMsg(btn.innerText)
+        check();
     })
 });
 
@@ -196,3 +199,11 @@ for (let i = 0; i < simpiOptions.length; i++) {
     simpiOptions[i].addEventListener("click", addToSimpiQueue)
 }
 
+function check() {
+    var intervalID = setInterval(() => {
+        sendMsg("now");
+        if(simpiQueue.length == simpiStatus) {
+            clearInterval(intervalID)
+        }
+    }, 500);
+}

@@ -105,6 +105,10 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+### 3/21/2022
+- Fix child process cannot send message bug
+- Add simpi status check
+
 ### 3/20/2022
 - Update GPIO ports
 - Add test cases
