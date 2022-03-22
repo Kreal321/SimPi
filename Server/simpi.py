@@ -97,8 +97,12 @@ class SimpiQ:
     def stopAudio(self, file):
         self.audios[file].kill()
 
+    def start(self):
+        time.sleep(1)
+
     def stop(self, signals):
         signals[2] = True
+
 
 def simpiProcess(data, signals):
     
@@ -116,6 +120,7 @@ def simpiProcess(data, signals):
         print(f"{simpi.currentIdx() - 1}: {optionToString(current)}")
         if(current["type"] == "10"):
             print("Simpi start running.")
+            simpi.start()
         if(current["type"] == "11"):
             print("Simpi is waiting start buttun signal to start running.")
             simpi.waitUntil(signals, 1)

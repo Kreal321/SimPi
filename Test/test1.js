@@ -11,7 +11,6 @@ function log(str, error = false){
     
 }
 
-
 // create new websocket connection
 function autoConnect() {
     ip = document.getElementById("ip").value;
@@ -30,11 +29,12 @@ function autoConnect() {
         connectStatus.classList.add("text-danger");
         connectStatus.innerText = "Failed to connect";
     })
+
     // Receive a new message
     ws.addEventListener('message', (event)=>{
         var msg = JSON.parse(event.data)
         if (msg.type == 0) {
-            addMsg(msg['data']);
+            // addMsg(msg['data']);
             log("Info: Message received from server: " + msg['data']);
         } else if (msg.type == 3) {
             if (msg.data > 1){
@@ -42,6 +42,8 @@ function autoConnect() {
             }
         } else if (msg.type == 4) {
             log("Info: Message received from server: " + msg['data']);
+        } else if (msg.type == 5) {
+            simpiStatus = parseInt(msg['data']);
         }
         
 
@@ -51,8 +53,6 @@ function autoConnect() {
 var ip = "";
 var ws = null;
 document.getElementById("connectBtn").addEventListener("click", autoConnect)
-
-
 
 const inputbox = document.getElementById("text");
 const checkbox = document.getElementById("check");
@@ -97,42 +97,44 @@ const controllerBtns = document.getElementById("controller-btns").childNodes
 
 controllerBtns.forEach( (btn) => {
     btn.addEventListener('click', (e) => {
-        sendMsg(btn.innerText)
+        sendMsg(btn.innerText);
+        if (btn.innerText == "Start") {
+            check();
+        }
+        if (btn.innerText == "Stop") {
+            clearInterval(intervalID);
+            intervalID = null;
+        }
     })
 });
 
 
 // SimPi Queue
-var simpiQueue = [];
+var simpiQueue = []
 document.getElementById("sendSimpiQ").addEventListener("click", () => {
     sendMsg(simpiQueue, 2)
+    updateQueueDisplay()
 })
 
-function optionToString(option){
+function optionToString(option, id){
     const optionList = {
-        "10": "Start",
-        "11": '<button class="btn btn-outline-success" onclick="signalBtn()">Click to start</button>',
-        "20": "Suspend",
-        "21": "Click to spspend",
-        "30": "Resume",
-        "31": "Click to resume",
-        "40": "Stop",
-        "41": '<button class="btn btn-outline-success">Click to stop</button>',
+        "10": '<div class="text-outline-success blue" id="' + id + '">Start</div>',
+        "11": '<button class="btn btn-outline-primary text-outline-success blue" onclick="signalBtn()" id="' + id + '">Click to start</button>',
+        "40": '<div class="text-outline-success blue" id="' + id + '">Stop</div>',
+        "50": '<div class="text-outline-success blue" id="' + id + '">Wait ' + option.data[0] + ' seconds</div>',
         "51": "Wait until Sensor input high",
         "52": "Wait until Source 2 is On",
-        "53": 'Wait until <button class="btn btn-outline-success" onclick="signalBtn()">Click</button>',
-        "61": "On Port ",
-        "62": "Off Port ",
+        "53": '<button class="btn btn-outline-primary text-outline-success blue" onclick="signalBtn()" id="' + id + '">Click to resume</button>',
+        "61": '<div class="text-outline-success blue" id="' + id + '">On Port ' + option.data[0] + '</div>',
+        "62": '<div class="text-outline-success blue" id="' + id + '">Off Port ' + option.data[0] + '</div>',
         "71": "Play Audio ",
         "72": "Pause Audio ",
         "73": "Resume Audio ",
         "74": "Stop Audio ",
     }
-    if(option.type == "50"){
-        return "Wait " + option.data[0] + " seconds";
-    }else{
-        return optionList[option.type] + option.data[0];
-    }
+
+    return optionList[option.type];
+    
 }
 
 function updateQueueDisplay(){
@@ -140,7 +142,10 @@ function updateQueueDisplay(){
 
     var text = ""
     simpiQueue.forEach((option, idx) => {
-        text += (idx + 1) + ": " + optionToString(option) + "<br/>"
+        text += optionToString(option, idx + 1)
+        if(idx != simpiQueue.length - 1) {
+            text += '<svg class="blue" id="' + (idx+1.5) + '" viewbox="0 0 10 100"><line x1="5" x2="5" y1="0" y2="100"/></svg>'
+        }
     })
     queue.innerHTML = text;
 }
@@ -196,9 +201,47 @@ for (let i = 0; i < simpiOptions.length; i++) {
     simpiOptions[i].addEventListener("click", addToSimpiQueue)
 }
 
+
+// Simpi Queue Status
+var simpiStatus = 0;
+
+function updateDisplayColor(id){
+    try{
+        document.getElementById(id.toString()).classList.remove("blue");
+        document.getElementById((id-0.5).toString()).classList.remove("blue");
+        document.getElementById((id-1).toString()).classList.add("grey");
+        document.getElementById((id-0.5).toString()).classList.add("grey");
+    } catch(e){
+        console.log(e);
+    }
+    
+}
+
+var intervalID;
+
+function check() {
+    document.getElementById("1").classList.remove("blue");
+    var current = simpiStatus;
+    if (intervalID != null) {
+        clearInterval(intervalID);
+    }
+    intervalID = setInterval(() => {
+        sendMsg("status");
+        while(current < simpiStatus){
+            current += 1;
+            updateDisplayColor(current);
+        }
+        if (simpiQueue.length == simpiStatus) {
+            clearInterval(intervalID);
+            intervalID = null;
+        }
+    }, 500);
+}
+
 // Test
-autoConnect();
-simpiQueue = [{"type":"10","data":[""]},{"type":"61","data":["3"]},{"type":"61","data":["5"]},{"type":"61","data":["13"]},{"type":"40","data":[""]}];
+
+simpiQueue = [{'type': '10', 'data': ['']}, {'type': '61', 'data': ['33']}, {'type': '50', 'data': ['1']}, {'type': '61', 'data': ['35']}, {'type': '50', 'data': ['1']}, {'type': '61', 'data': ['36']}, {'type': '50', 'data': ['1']}, {'type': '61', 'data': ['37']}, {'type': '50', 'data': ['1']}, {'type': '61', 'data': ['19']}, {'type': '40', 'data': ['']}];
 updateQueueDisplay();
+autoConnect();
 sendMsg(simpiQueue, 2);
 sendMsg("Start");

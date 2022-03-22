@@ -15,15 +15,15 @@
     <div class="main-content position-relative border-radius-lg">
         <!-- TODO: Navigation Bar -->
         <nav class="navbar container-fluid p-4">
-            <div class="col-lg-8 col-12 row justify-content-between">
+            <div class="col-12 row justify-content-between">
                 <div class="col-5">
                     <a class="navbar-brand text-white" href="#">Simpi</a>
                 </div>
                 <div class="col-2 text-end">
-                    <a class="navbar-brand text-white" href="#">Option 1</a>
+                    <a class="navbar-brand text-white" href="#">Simpi Queue</a>
                 </div>
                 <div class="col-2 text-end">
-                    <a class="navbar-brand text-white" href="#">Option 2</a>
+                    <a class="navbar-brand text-white" href="#">Server Screen</a>
                 </div>
             </div>
         </nav>
@@ -31,11 +31,11 @@
         <!-- Main Content -->
         <div class="container-fluid py-4">
 
-            <div class="col-lg-8 col-12 alert alert-warning d-none" role="alert" id="alert">
+            <div class="col-12 alert alert-warning d-none" role="alert" id="alert">
                 <strong>Warning!</strong> There are other clients connected to the server!
             </div>
 
-            <div class="col-lg-8 col-12">
+            <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-body p-3">
 
@@ -50,7 +50,7 @@
             </div>
 
 
-            <div class="col-lg-8 col-12">
+            <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-body p-3">
                         <p class="text-sm mb-0 text-uppercase font-weight-bold">Server Controller</p>
@@ -66,7 +66,7 @@
             </div>
 
 
-            <div class="col-lg-8 col-12">
+            <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-body p-3">
                         <p class="text-sm text-uppercase font-weight-bold">SimPi Controller</p>
@@ -83,21 +83,9 @@
             </div>
             
 
-            <div class="col-lg-8 col-12">
-                <div class="card mb-4">
-                    <div class="card-header pb-0 p-3 d-flex">
-                        <h6>Screen</h6>
-                        
-                    </div>
-                    <div class="card-body pt-0 p-3">
-                        <div class="height-500 bg-gray-900 border-radius-xl text-white p-3 overflow-y-sroll" id="msg">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-8 col-12">
+            <div class="col-12">
                 <div class="row justify-content-between">
                     <div class="col-6 mb-4">
                         <div class="card">
@@ -246,41 +234,22 @@
 
             </div>
 
-            <div class="col-lg-8 col-12">
-                <div class="card">
-                    <div class="card-header pb-0 p-3 d-flex">
-                        <h6>SimPi Queue UI Design</h6>
-                        
-                    </div>
-                    <div class="card-body pt-0 p-3 flowchart ">
-                        <div class="text-outline-success grey" id="1">Start</div>
-                        <svg class="grey" viewbox="0 0 10 100">
-                            <line x1="5" x2="5" y1="0" y2="100"/>
-                        </svg>
-                        <div class="text-outline-success">Wait until Sensor input high</div>
-                        <svg viewbox="0 0 10 100">
-                            <line x1="5" x2="5" y1="0" y2="100"/>
-                        </svg>
-                        <div class="text-outline-success">Open Source 1</div>
-                        <svg viewbox="0 0 10 100">
-                            <line x1="5" x2="5" y1="0" y2="100"/>
-                        </svg>
-                        <div class="text-outline-success">Wait 5 seconds</div>
-                        <svg viewbox="0 0 10 100">
-                            <line x1="5" x2="5" y1="0" y2="100"/>
-                        </svg>
-                        <div class="text-outline-success">Stop</div>
-                        
+        </div>
 
-                        <br/>
-                        <button class="btn btn-outline-primary" id="sendSimpiQ">Upload queue to server</button>
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0 p-3 d-flex">
+                    <h6>Screen</h6>
+                    
+                </div>
+                <div class="card-body pt-0 p-3">
+                    <div class="height-500 bg-gray-900 border-radius-xl text-white p-3 overflow-y-sroll" id="msg">
+
                     </div>
                 </div>
-
-
             </div>
-
         </div>
+
     </div>
     
 

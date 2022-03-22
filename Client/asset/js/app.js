@@ -99,7 +99,7 @@ controllerBtns.forEach( (btn) => {
     btn.addEventListener('click', (e) => {
         sendMsg(btn.innerText);
         if (btn.innerText == "Start") {
-            check();
+            setTimeout(() => {  check(); }, 1000);
         }
         if (btn.innerText == "Stop") {
             clearInterval(intervalID);
@@ -220,6 +220,7 @@ function updateDisplayColor(id){
 var intervalID;
 
 function check() {
+    simpiStatus = 0;
     document.getElementById("1").classList.remove("blue");
     var current = simpiStatus;
     if (intervalID != null) {
@@ -227,6 +228,7 @@ function check() {
     }
     intervalID = setInterval(() => {
         sendMsg("status");
+        console.log(current + "/" + simpiStatus);
         while(current < simpiStatus){
             current += 1;
             updateDisplayColor(current);
@@ -234,6 +236,7 @@ function check() {
         if (simpiQueue.length == simpiStatus) {
             clearInterval(intervalID);
             intervalID = null;
+            
         }
     }, 500);
 }

@@ -15,12 +15,19 @@ async def decoding(ws, message):
     global simpi
     message = json.loads(message)
 
+    if (signals[2] == True):
+        await simpi.stop()
+        simpi = None
+        signals[2] = False
+
+
     if (message["type"] == 1) :
         if message["data"] == "hello":
             await ws.send("Hello! Nice to meet you")
         elif message["data"] == "Start":
             # Start Simpi Process
             if(simpi):
+                signals[0] = 0
                 await simpi.start()
             else:
                 print("Warning: simpi process is not initialized")
@@ -50,16 +57,16 @@ async def decoding(ws, message):
                 print(f"ERROR: GPIO clean up failed.")
         elif message['data'] == "status":
             await connected_clients.send(f"{signals[0]}", status = True)
-            if (signals[2] == True):
-                await simpi.stop()
-                simpi = None
-                signals[2] = False
+            
+
+
 
     elif (message["type"] == 2):
         if(simpi):
             print("Warning: simpi process is running")
         else:
             simpi = SimpiController(connected_clients, message["data"])
+
 
     
     print(f'Received from client{ws.remote_address}: {message}')
