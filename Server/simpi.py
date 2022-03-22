@@ -46,7 +46,7 @@ class SimpiQ:
         except:
                 print(f"ERROR: GPIO set mode failed.")
     
-        for i in [3, 5, 7, 11, 19, 13, 15, 21, 29, 31, 33, 35]:
+        for i in [3, 5, 7, 11, 19, 13, 15, 21, 29, 31, 33, 35, 37, 12, 16, 18, 22, 32, 36, 38, 40]:
             try:
                 GPIO.setup(i, GPIO.OUT)
                 GPIO.output(i, GPIO.HIGH)
