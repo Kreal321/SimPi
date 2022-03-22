@@ -3,7 +3,7 @@ import psutil
 
 from simpi import simpiProcess
 
-signals = multiprocessing.Array('i', [0, False])
+signals = multiprocessing.Array('i', [0, False, False])
 
 class SimpiProcessController:
     """SimpiProcessController class for controling simpi child process

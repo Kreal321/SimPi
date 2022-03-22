@@ -48,8 +48,12 @@ async def decoding(ws, message):
                GPIO.cleanup()
             except:
                 print(f"ERROR: GPIO clean up failed.")
-        elif message['data'] == "now":
+        elif message['data'] == "status":
             await connected_clients.send(f"{signals[0]}", status = True)
+            if (signals[2] == True):
+                await simpi.stop()
+                simpi = None
+                signals[2] = False
 
     elif (message["type"] == 2):
         if(simpi):

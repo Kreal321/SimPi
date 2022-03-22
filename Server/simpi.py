@@ -1,5 +1,7 @@
+import imp
 import time
-import asyncio
+import multiprocessing
+import psutil
 from audio import Audio
 
 try:
@@ -95,6 +97,9 @@ class SimpiQ:
     def stopAudio(self, file):
         self.audios[file].kill()
 
+    def stop(self, signals):
+        signals[2] = True
+
 def simpiProcess(data, signals):
     
     simpi = SimpiQ(data)
@@ -104,7 +109,7 @@ def simpiProcess(data, signals):
         print(f"{optionToString(item)}")
     print(f"--------------------------")
 
-
+    signals[0] = 0
     while(simpi.hasNext()):
         signals[0] += 1
         current = simpi.pop()
@@ -114,6 +119,8 @@ def simpiProcess(data, signals):
         if(current["type"] == "11"):
             print("Simpi is waiting start buttun signal to start running.")
             simpi.waitUntil(signals, 1)
+        if(current["type"] == "40"):
+            simpi.stop(signals)
         if(current["type"] == "53"):
             print("Simpi is waiting buttun signal to continue running.")
             simpi.waitUntil(signals, 1)

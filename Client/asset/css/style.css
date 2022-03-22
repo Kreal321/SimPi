@@ -117,6 +117,18 @@ h1, h2, h3, h4, h5, h6 {
   stroke: #8392ab;
 }
 
+.flowchart .text-outline-success.blue{
+  color: #5e72e4;
+  border-color: #5e72e4;
+  border: 1px solid #5e72e4;
+}
+
+.flowchart svg.blue line {
+  stroke: #5e72e4;
+}
+
+
+
 /* Flowchart */
 .flowchart{
     display: flex;
