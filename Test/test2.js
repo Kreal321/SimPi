@@ -243,7 +243,7 @@ function check() {
 
 // Test
 
-simpiQueue = [{'type': '10', 'data': ['']}, {'type': '61', 'data': ['29']}, {'type': '50', 'data': ['1']}, {'type': '61', 'data': ['31']}, {'type': '50', 'data': ['1']}, {'type': '61', 'data': ['36']}, {'type': '50', 'data': ['1']}, {'type': '61', 'data': ['37']}, {'type': '50', 'data': ['1']}, {'type': '61', 'data': ['19']}, {'type': '40', 'data': ['']}];
+simpiQueue = [{"type":"10","data":[""]},{"type":"61","data":["5"]},{"type":"50","data":["1"]},{"type":"62","data":["5"]},{"type":"50","data":["1"]},{"type":"61","data":["5"]},{"type":"50","data":["1"]},{"type":"62","data":["5"]},{"type":"50","data":["1"]},{"type":"61","data":["5"]},{"type":"40","data":[""]}];
 updateQueueDisplay();
 autoConnect();
 sendMsg(simpiQueue, 2);
