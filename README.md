@@ -106,6 +106,9 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+### 3/24/2022
+- Drag and drop features
+
 ### 3/22/2022
 - Fix Stop simpi option bug
 - Add Simpi Queue UI
