@@ -1,0 +1,103 @@
+/* Version 1.0 */
+@font-face {
+    font-family: 'simpi';
+    src:
+      url('../fonts/simpi.ttf?ddusk8') format('truetype'),
+      url('../fonts/simpi.woff?ddusk8') format('woff'),
+      url('../fonts/simpi.svg?ddusk8#simpi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+  [class^="simpi-icon-"], [class*=" simpi-icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'simpi' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .simpi-icon-alert-circle:before {
+    content: "\e900";
+  }
+  .simpi-icon-alert-triangle:before {
+    content: "\e901";
+  }
+  .simpi-icon-check:before {
+    content: "\e902";
+  }
+  .simpi-icon-check-circle:before {
+    content: "\e903";
+  }
+  .simpi-icon-download:before {
+    content: "\e904";
+  }
+  .simpi-icon-download-cloud:before {
+    content: "\e905";
+  }
+  .simpi-icon-edit:before {
+    content: "\e906";
+  }
+  .simpi-icon-github:before {
+    content: "\e907";
+  }
+  .simpi-icon-home:before {
+    content: "\e908";
+  }
+  .simpi-icon-menu:before {
+    content: "\e909";
+  }
+  .simpi-icon-move:before {
+    content: "\e90a";
+  }
+  .simpi-icon-pause:before {
+    content: "\e90b";
+  }
+  .simpi-icon-play:before {
+    content: "\e90c";
+  }
+  .simpi-icon-power:before {
+    content: "\e90d";
+  }
+  .simpi-icon-refresh-cw:before {
+    content: "\e90e";
+  }
+  .simpi-icon-send:before {
+    content: "\e90f";
+  }
+  .simpi-icon-settings:before {
+    content: "\e910";
+  }
+  .simpi-icon-slash:before {
+    content: "\e911";
+  }
+  .simpi-icon-trash-2:before {
+    content: "\e912";
+  }
+  .simpi-icon-upload:before {
+    content: "\e913";
+  }
+  .simpi-icon-upload-cloud:before {
+    content: "\e914";
+  }
+  .simpi-icon-wifi:before {
+    content: "\e915";
+  }
+  .simpi-icon-wifi-off:before {
+    content: "\e916";
+  }
+  .simpi-icon-x:before {
+    content: "\e917";
+  }
+  .simpi-icon-x-circle:before {
+    content: "\e918";
+  }
+  

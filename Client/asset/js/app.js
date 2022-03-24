@@ -137,19 +137,81 @@ function optionToString(option, id){
     
 }
 
-function updateQueueDisplay(){
-    const queue = document.getElementById("queue");
-
-    var text = ""
-    simpiQueue.forEach((option, idx) => {
-        text += optionToString(option, idx + 1)
-        if(idx != simpiQueue.length - 1) {
-            text += '<svg class="blue" id="' + (idx+1.5) + '" viewbox="0 0 10 100"><line x1="5" x2="5" y1="0" y2="100"/></svg>'
-        }
-    })
-    queue.innerHTML = text;
+function optionString(option){
+    const optionList = {
+        "10": 'Start',
+        "11": 'Click to start',
+        "40": 'Stop',
+        "50": `Wait ${option.data[0]} seconds`,
+        "51": "Wait until Sensor input high",
+        "52": "Wait until Source 2 is On",
+        "53": 'Click to resume',
+        "61": `On port ${option.data[0]}`,
+        "62": `Off port ${option.data[0]}`,
+        "71": `Play Audio ${option.data[0]}.mp3`,
+        "72": `Pause Audio ${option.data[0]}.mp3`,
+        "73": `Resume Audio ${option.data[0]}.mp3`,
+        "74": `Stop Audio ${option.data[0]}.mp3`,
+    }
+    return optionList[option.type];
 }
 
+function updateQueueDisplay() {
+    const queue = document.getElementById("queue");
+    var text = "";
+    simpiQueue.forEach((option, idx) => {
+        text += `
+            <div class="draggable" draggable="true">
+                <span class="text text-outline-success blue" id="${idx+1}">${optionString(option)}</span>
+                <span class="icon simpi-icon-menu"></span>
+                <span class="icon simpi-icon-trash-2"></span>
+            </div>
+        `;
+
+        if (idx != simpiQueue.length - 1) {
+            text += `
+                <svg class="blue" id="${(idx+1.5)}" viewbox="0 0 10 100">
+                    <line x1="5" x2="5" y1="0" y2="100"/>
+                </svg>
+            `;
+        };
+    })
+
+    queue.innerHTML = text;
+
+    document.querySelectorAll('.draggable').forEach((item) => {
+        item.addEventListener("dragstart", dragStart);
+        item.addEventListener("dragenter", dragEnter);
+        item.addEventListener("dragleave", dragLeave);
+        item.addEventListener("dragover", dragOver);
+        item.addEventListener("drop", dragDrop);
+    })
+    document.querySelectorAll('.draggable .simpi-icon-trash-2').forEach((item) => {
+        // item.addEventListener("click", remove);
+    })
+    
+}
+
+let dragIdx = -1;
+
+function dragStart() {
+    dragIdx = this.children[0].id - 1;
+}
+function dragEnter() {
+    this.classList.add('over');
+}
+function dragLeave() {
+    this.classList.remove('over');
+}
+function dragOver(e) {
+    e.preventDefault();
+}
+function dragDrop() {
+    this.classList.remove('over');
+    simpiQueue.splice(this.children[0].id - 1, 0, simpiQueue.splice(dragIdx, 1)[0]);
+    updateQueueDisplay();
+    console.log('Event: ', 'dragdrop');
+}
 
 function addToSimpiQueue(){
     const type = this.parentNode.getAttribute('simpiType');

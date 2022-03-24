@@ -147,8 +147,6 @@ h1, h2, h3, h4, h5, h6 {
   animation: animateline 5s linear both infinite;
 }
 
-
-
 @-moz-keyframes animateline {
   from {
     stroke-dashoffset: 0;
@@ -180,4 +178,44 @@ h1, h2, h3, h4, h5, h6 {
   to {
     stroke-dashoffset: -3rem;
   }
+}
+
+/* draggable */
+.draggable {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.draggable .text{
+  margin: 0 auto;
+  cursor: grab;
+}
+
+.draggable-list .icon {
+  cursor: pointer;
+  font-size: 20px;
+  opacity: 0;
+  position: absolute;
+  top: 10px;
+  transition: all .35s ease-in-out;
+}
+
+.draggable-list .icon.simpi-icon-trash-2 {
+  right: 10px;
+}
+
+.draggable-list .icon.simpi-icon-menu {
+  right: 40px;
+}
+
+.draggable:hover .icon{
+  opacity: 1;
+  transition: all .35s ease-in-out;
+}
+
+.draggable.over {
+  background-color: #b9c0ff;
+  border-radius: 0.5rem;
+  opacity: 0.2;
 }
