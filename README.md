@@ -110,6 +110,7 @@ e.g. Connect to `127.0.0.1` if server is run locally
 - Drag and drop features
 - ICON design
 - Impletement delete
+- Make Simpi option sticky to the top
 
 ### 3/22/2022
 - Fix Stop simpi option bug
