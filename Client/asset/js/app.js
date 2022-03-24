@@ -91,6 +91,8 @@ function send(){
 
 function signalBtn(){
     sendMsg("signal");
+    console.log(this);
+    this.classList.add("not-allowed");
 }
 
 const controllerBtns = document.getElementById("controller-btns").childNodes
@@ -113,31 +115,10 @@ controllerBtns.forEach( (btn) => {
 var simpiQueue = []
 document.getElementById("sendSimpiQ").addEventListener("click", () => {
     sendMsg(simpiQueue, 2)
-    updateQueueDisplay()
+    updateQueueDisplay2()
 })
 
-function optionToString(option, id){
-    const optionList = {
-        "10": '<div class="text-outline-success blue" id="' + id + '">Start</div>',
-        "11": '<button class="btn btn-outline-primary text-outline-success blue" onclick="signalBtn()" id="' + id + '">Click to start</button>',
-        "40": '<div class="text-outline-success blue" id="' + id + '">Stop</div>',
-        "50": '<div class="text-outline-success blue" id="' + id + '">Wait ' + option.data[0] + ' seconds</div>',
-        "51": "Wait until Sensor input high",
-        "52": "Wait until Source 2 is On",
-        "53": '<button class="btn btn-outline-primary text-outline-success blue" onclick="signalBtn()" id="' + id + '">Click to resume</button>',
-        "61": '<div class="text-outline-success blue" id="' + id + '">On Port ' + option.data[0] + '</div>',
-        "62": '<div class="text-outline-success blue" id="' + id + '">Off Port ' + option.data[0] + '</div>',
-        "71": "Play Audio ",
-        "72": "Pause Audio ",
-        "73": "Resume Audio ",
-        "74": "Stop Audio ",
-    }
-
-    return optionList[option.type];
-    
-}
-
-function optionString(option){
+function optionToString(option){
     const optionList = {
         "10": 'Start',
         "11": 'Click to start',
@@ -162,7 +143,7 @@ function updateQueueDisplay() {
     simpiQueue.forEach((option, idx) => {
         text += `
             <div class="draggable" draggable="true">
-                <span class="text text-outline-success blue" id="${idx+1}">${optionString(option)}</span>
+                <span class="text text-outline-success blue" id="${idx+1}">${optionToString(option)}</span>
                 <span class="icon simpi-icon-menu"></span>
                 <span class="icon simpi-icon-trash-2"></span>
             </div>
@@ -191,6 +172,33 @@ function updateQueueDisplay() {
     })
     
 }
+
+function updateQueueDisplay2() {
+    const queue = document.getElementById("queue");
+    var text = "";
+    simpiQueue.forEach((option, idx) => {
+        if(option.type == 11 || option.type == 53) {
+            text += `<button class="text btn btn-outline-primary text-outline-success blue" id="${idx+1}">${optionToString(option)}</button>`;
+        } else {
+            text += `<span class="text text-outline-success blue" id="${idx+1}">${optionToString(option)}</span>`;
+        }
+
+        if (idx != simpiQueue.length - 1) {
+            text += `
+                <svg class="blue" id="${(idx+1.5)}" viewbox="0 0 10 100">
+                    <line x1="5" x2="5" y1="0" y2="100"/>
+                </svg>
+            `;
+        };
+    })
+
+    queue.innerHTML = text;
+
+    document.querySelectorAll('button.text').forEach((item) => {
+        item.addEventListener("click", signalBtn);
+    })
+}
+
 function removeItem() {
     simpiQueue.splice(this.parentNode.children[0].id - 1, 1);
     updateQueueDisplay();
