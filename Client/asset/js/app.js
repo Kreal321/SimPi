@@ -187,9 +187,13 @@ function updateQueueDisplay() {
         item.addEventListener("drop", dragDrop);
     })
     document.querySelectorAll('.draggable .simpi-icon-trash-2').forEach((item) => {
-        // item.addEventListener("click", remove);
+        item.addEventListener("click", removeItem);
     })
     
+}
+function removeItem() {
+    simpiQueue.splice(this.parentNode.children[0].id - 1, 1);
+    updateQueueDisplay();
 }
 
 let dragIdx = -1;
@@ -210,7 +214,6 @@ function dragDrop() {
     this.classList.remove('over');
     simpiQueue.splice(this.children[0].id - 1, 0, simpiQueue.splice(dragIdx, 1)[0]);
     updateQueueDisplay();
-    console.log('Event: ', 'dragdrop');
 }
 
 function addToSimpiQueue(){
