@@ -100,9 +100,7 @@ const controllerBtns = document.getElementById("controller-btns").childNodes
 controllerBtns.forEach( (btn) => {
     btn.addEventListener('click', (e) => {
         sendMsg(btn.innerText);
-        if (btn.innerText == "Start") {
-            setTimeout(() => {  check(); }, 1000);
-        }
+
         if (btn.innerText == "Stop") {
             clearInterval(intervalID);
             intervalID = null;
@@ -116,6 +114,8 @@ var simpiQueue = []
 document.getElementById("sendSimpiQ").addEventListener("click", () => {
     sendMsg(simpiQueue, 2)
     updateQueueDisplay2()
+    setTimeout(() => {  check(); }, 1000);
+    
 })
 
 function optionToString(option){
