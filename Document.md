@@ -23,6 +23,15 @@ Display on console
 ### Type 5: simpi status
 Simpi status
 
+### Type 6: simpi config file names
+server to client
+
+### Type 7: simpi config file data
+server to client
+
+### Type 8: simpi config file option
+client to server
+
 ## SimPi Queue Options
 ```
 {

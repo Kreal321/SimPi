@@ -106,6 +106,9 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+## 4/2/2022
+- File save and load features
+
 ## 3/28/2022
 - Add auto start button
 

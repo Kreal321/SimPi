@@ -44,6 +44,11 @@ function autoConnect() {
             log("Info: Message received from server: " + msg['data']);
         } else if (msg.type == 5) {
             simpiStatus = parseInt(msg['data']);
+        } else if (msg.type == 6) {
+            updateConfigList(msg.data);
+        } else if (msg.type == 7) {
+            simpiQueue = msg.data;
+            updateQueueDisplay();
         }
         
 
@@ -313,3 +318,46 @@ function check() {
         }
     }, 500);
 }
+
+// config file
+function updateConfigList(data) {
+    var list = document.getElementById("configList");
+    var configList = "";
+    data.forEach((file) => {
+        configList += `<option value="${file}">${file}</option>`
+    })
+    list.innerHTML = configList;
+}
+
+function clearConfig() {
+    simpiQueue = [];
+    updateQueueDisplay();
+}
+
+function loadConfig() {
+    var data = {};
+    data.type = "load";
+    data.file = document.getElementById("configList").value;
+    sendMsg(data, 8);
+}
+
+function saveConfig() {
+    var data = {};
+    data.type = "save";
+    data.file = document.getElementById("configName").value;
+    data.data = simpiQueue;
+    sendMsg(data, 8);
+}
+
+function deleteConfig() {
+    var data = {};
+    data.type = "delete";
+    data.file = document.getElementById("configList").value;
+    sendMsg(data, 8);
+}
+
+
+document.getElementById("clearConfig").addEventListener("click", clearConfig);
+document.getElementById("loadConfig").addEventListener("click", loadConfig);
+document.getElementById("saveConfig").addEventListener("click", saveConfig);
+document.getElementById("deleteConfig").addEventListener("click", deleteConfig);
