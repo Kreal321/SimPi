@@ -352,6 +352,10 @@ function updateConfigList(data) {
 function clearConfig() {
     simpiQueue = [];
     updateQueueDisplay();
+    if (intervalID != null) {
+        clearInterval(intervalID);
+    }
+    sendMsg("Stop");
 }
 
 function loadConfig() {

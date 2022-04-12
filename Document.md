@@ -124,5 +124,5 @@ sudo crontab -e
 
 Add command line
 ```
-@reboot sudo /home/pi/Desktop/simpi.py > log.txt &
+@reboot sudo /home/pi/Desktop/simpi.py > /home/pi/Desktop/log.txt &
 ```

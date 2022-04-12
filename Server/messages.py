@@ -58,19 +58,19 @@ async def decoding(ws, message):
         elif message['data'] == "status":
             await connected_clients.send(f"{signals[0]}", status = True)
 
-            
-
     elif (message["type"] == 2):
         if(simpi):
             print("Warning: simpi process is running")
+            await simpi.stop()
+            simpi = None
+        
+        simpi = SimpiController(connected_clients, message["data"])
+        # if(message["data"][0]["type"] == "10"):
+        if(simpi):
+            signals[0] = 0
+            await simpi.start()
         else:
-            simpi = SimpiController(connected_clients, message["data"])
-            # if(message["data"][0]["type"] == "10"):
-            if(simpi):
-                signals[0] = 0
-                await simpi.start()
-            else:
-                print("Warning: simpi process is not initialized")
+            print("Warning: simpi process is not initialized")
 
     elif (message["type"] == 8):
         option = message["data"]
