@@ -14,7 +14,12 @@ class Config:
             for file in files:
                 self.names.append(file[:-5])
         except FileNotFoundError:
-            print("Error: File not found. Current Path: " +  os.getcwd())
+            try:
+                files = os.listdir("/home/pi/Desktop/SimPi/Server/Config")
+                for file in files:
+                    self.names.append(file[:-5])
+            except FileNotFoundError:
+                print("Error: File not found. Current Path: " +  os.getcwd())
 
     def getNames(self):
         self.names = []
