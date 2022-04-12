@@ -15,7 +15,8 @@ class Config:
                 self.names.append(file[:-5])
         except FileNotFoundError:
             try:
-                files = os.listdir("/home/pi/Desktop/SimPi/Server/Config")
+                self.path = "/home/pi/Desktop/SimPi/Server/Config"
+                files = os.listdir(self.path)
                 for file in files:
                     self.names.append(file[:-5])
             except FileNotFoundError:
