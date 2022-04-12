@@ -11,6 +11,15 @@ function log(str, error = false){
     
 }
 
+// Debug btn
+function showDebug() {
+    document.querySelectorAll(".hide").forEach((item) => {
+        item.classList.remove("hide");
+    })
+}
+
+document.getElementById("debug-btn").addEventListener("click", showDebug);
+
 // create new websocket connection
 function autoConnect() {
     ip = document.getElementById("ip").value;
@@ -132,12 +141,15 @@ function optionToString(option){
         "51": "Wait until Sensor input high",
         "52": "Wait until Source 2 is On",
         "53": 'Click to resume',
-        "61": `On port ${option.data[0]}`,
-        "62": `Off port ${option.data[0]}`,
+        "61": `On ${option.data[1]} <br/> (Port ${option.data[0]})`,
+        "62": `Off ${option.data[1]} <br/> (Port ${option.data[0]})`,
         "71": `Play Audio ${option.data[0]}.mp3`,
         "72": `Pause Audio ${option.data[0]}.mp3`,
         "73": `Resume Audio ${option.data[0]}.mp3`,
         "74": `Stop Audio ${option.data[0]}.mp3`,
+        "80": `End If`,
+        "81": `If True`,
+        "82": `If False`,
     }
     return optionList[option.type];
 }
@@ -237,7 +249,8 @@ function addToSimpiQueue(){
         case "3":
         case "4":
         case "5":
-            var selects = this.parentNode.getElementsByTagName("select")
+        case "8":
+            var selects = this.parentNode.getElementsByTagName("select");
             simpiQueue.push({
                 type: type + selects[0].value,
                 data: [""]
@@ -251,18 +264,25 @@ function addToSimpiQueue(){
             })
             break;
         case "6":
-            var selects = this.parentNode.getElementsByTagName("select")
+            var selects = this.parentNode.getElementsByTagName("select");
+            var inputs = this.parentNode.getElementsByTagName("input");
             simpiQueue.push({
                 type: type + selects[0].value,
-                data: [selects[1].value]
+                data: [selects[1].value, inputs[0].value]
             })
             break;
         case "7":
-            var selects = this.parentNode.getElementsByTagName("select")
+            var selects = this.parentNode.getElementsByTagName("select");
             var inputs = this.parentNode.getElementsByTagName("input");
             simpiQueue.push({
                 type: type + selects[0].value,
                 data: [inputs[0].value]
+            })
+            break;
+        case "80":
+            simpiQueue.push({
+                type: "80",
+                data: [""]
             })
             break;
         default:
@@ -352,7 +372,7 @@ function saveConfig() {
 function deleteConfig() {
     var data = {};
     data.type = "delete";
-    data.file = document.getElementById("configList").value;
+    data.file = document.getElementById("configName").value;
     sendMsg(data, 8);
 }
 

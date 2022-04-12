@@ -106,6 +106,14 @@ e.g. Connect to `127.0.0.1` if server is run locally
 
 
 ## Change log
+## 4/12/2022
+- If statement
+- Add show debug button
+- Add background
+
+## 4/7/2022
+- UI design
+
 ## 4/2/2022
 - File save and load features
 

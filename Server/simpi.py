@@ -28,6 +28,9 @@ def optionToString(option):
         "72": "Pause Audio ",
         "73": "Resume Audio ",
         "74": "Stop Audio ",
+        "80": "End If",
+        "81": "If True",
+        "82": "If False",
     }
     if(option["type"] == "50"):
         return "Wait " + option["data"][0] + " seconds"
@@ -38,6 +41,7 @@ class SimpiQ:
     queue = []
     idx = 0
     audios = {}
+    run = True
 
     def __init__(self, data) -> None:
         self.queue = data
@@ -103,6 +107,12 @@ class SimpiQ:
     def stop(self, signals):
         signals[2] = True
 
+    def ifStmt(self, s:bool):
+        self.run = s
+
+    def endIf(self):
+        self.run = True
+
 
 def simpiProcess(data, signals):
     
@@ -118,6 +128,9 @@ def simpiProcess(data, signals):
         signals[0] += 1
         current = simpi.pop()
         print(f"{simpi.currentIdx() - 1}: {optionToString(current)}")
+        if(simpi.run == False):
+             continue
+
         if(current["type"] == "10"):
             print("Simpi start running.")
             simpi.start()
@@ -139,6 +152,11 @@ def simpiProcess(data, signals):
             simpi.playAudio(current["data"][0])
         if(current["type"] == "74"):
             simpi.stopAudio(current["data"][0])
-        
+        if(current["type"] == "80"):
+            simpi.endIf()
+        if(current["type"] == "81"):
+            simpi.ifStmt(True)  
+        if(current["type"] == "82"):
+            simpi.ifStmt(False)
 
     print("Simpi finished")
