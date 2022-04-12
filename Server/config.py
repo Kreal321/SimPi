@@ -9,9 +9,12 @@ class Config:
         self.loadFolder()
         
     def loadFolder(self):
-        files = os.listdir(self.path)
-        for file in files:
-            self.names.append(file[:-5])
+        try:
+            files = os.listdir(self.path)
+            for file in files:
+                self.names.append(file[:-5])
+        except FileNotFoundError:
+            print("Error: File not found. Current Path: " +  os.getcwd())
 
     def getNames(self):
         self.names = []
