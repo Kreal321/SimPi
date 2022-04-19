@@ -65,6 +65,9 @@ Close Source `type: 62`
 
 #### 7. Audio
 Play Audio `type: 71`
+Pause Audio `type: 72`
+Resume Audio `type: 73`
+Stop Audio `type: 74`
 
 #### 8. If Statement
 If X `type: 8X` \

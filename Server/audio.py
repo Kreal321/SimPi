@@ -2,6 +2,7 @@ import os
 
 import multiprocessing
 import psutil
+from playsound import playsound
 
 class Audio:
 
@@ -45,4 +46,5 @@ class Audio:
         self.process.kill()
 
 def audioProcess(data):
-    os.system("mpg123 Server/Sources/" + data + ".mp3")
+    # os.system("mpg123 Server/Sources/" + data + ".mp3")
+    playsound("Server/Sources/" + data + ".mp3")

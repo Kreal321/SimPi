@@ -59,12 +59,10 @@ Install `Raspberry Pi GPIO`
 ```
 sudo apt-get install -y rpi.gpio
 ```
-Install `mpg123`
+Install `playsound`
 ```
-sudo apt-get install -y mpg123
+sudo apt-get install -y playsound==1.2.2 
 ```
-
-
 Check python version
 ```
 python3 --version
@@ -103,9 +101,21 @@ Run index.html \
 Connect to the ip address show in the server terminal \
 e.g. Connect to `127.0.0.1` if server is run locally
 
-
+## Manully Kill process
+```
+sudo killall sudo python3
+```
+rm -rf SimPi
 
 ## Change log
+## 4/19/2022
+- Audio bugs fix
+- Add play/pasue/resume/stop audio options
+
+## 4/13/2022
+- fix GPIO bugs
+- Perform system tests
+
 ## 4/12/2022
 - If statement
 - Add show debug button

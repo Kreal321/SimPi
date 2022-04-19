@@ -50,7 +50,7 @@ class SimpiQ:
         except:
                 print(f"ERROR: GPIO set mode failed.")
     
-        for i in [3, 5, 7, 11, 19, 13, 15, 21, 29, 31, 33, 35, 37, 12, 16, 18, 22, 32, 36, 38, 40]:
+        for i in [2, 3, 4, 5, 6, 9, 10, 11, 13, 17, 19, 22, 27]:
             try:
                 GPIO.setup(i, GPIO.OUT)
                 GPIO.output(i, GPIO.HIGH)
@@ -97,6 +97,9 @@ class SimpiQ:
 
     def pauseAudio(self, file):
         self.audios[file].pause()
+
+    def resumeAudio(self, file):
+        self.audios[file].resume()
 
     def stopAudio(self, file):
         self.audios[file].kill()
@@ -150,6 +153,10 @@ def simpiProcess(data, signals):
             simpi.turnOff(current["data"][0])
         if(current["type"] == "71"):
             simpi.playAudio(current["data"][0])
+        if(current["type"] == "72"):
+            simpi.pauseAudio(current["data"][0])
+        if(current["type"] == "73"):
+            simpi.resumeAudio(current["data"][0])
         if(current["type"] == "74"):
             simpi.stopAudio(current["data"][0])
         if(current["type"] == "80"):
