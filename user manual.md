@@ -65,16 +65,61 @@ start remote.bat
 
 ## Start Client
 1. Run index.html \
-Or open https://kreal321.github.io/SimPi/ in browser
+Or open https://kreal321.github.io/SimPi/ in browser \
+And you will get a page like this:
+
+![](images/openpage.jpg?raw=true "Title")
 
 2. Connect to server
 ```
 Connect to the ip address show in the server terminal
 e.g. Connect to 127.0.0.1 if server is run locally
 ```
+Click `Auto Connect`, and then the client will try to connect to the server and shows `Connecting`
 
-3. Set up SimPi Queue from options or Read config files
+![](images/serverconnection.jpg?raw=true "Title")
 
+![](images/serverconnecting.jpg?raw=true "Title")
+
+ When you see a green `Connected`, means you have connected to the server
+
+ ![](images/serverconnected.jpg?raw=true "Title")
+
+  When you see a red `Failed to connect`, means the connection failed, so you need to check the server and wifi setting. See more at [Troubleshooting](#troubleshooting)
+
+ ![](images/serverfail.jpg?raw=true "Title")
+
+3. Set up SimPi Queue from options 
+
+You can create your customed SimPi Queue from `Options`
+
+ ![](images/options.jpg?raw=true "Title")
+
+ ![](images/simpiqueue.jpg?raw=true "Title")
+
+You can also move or delete a option that is not in the correct place
+ 
+ ![](images/deleteoption.jpg?raw=true "Title")
+
+4. Upload SimPi Queue to the server
+
+After you set up your queue, you just need to click `Upload queue to server`
+
+ ![](images/uploadq.jpg?raw=true "Title")
+
+**Remember to set `Start` and `Stop` in each queue**
+
+ ![](images/startstop.jpg?raw=true "Title")
+
+5. Save and Load cfg files from server
+
+You can also save your customed queue to the server:
+
+ ![](images/cfgfile.jpg?raw=true "Title")
+
+
+
+# Troubleshooting
 
 ## Server side error fixing
 1. Manully kill process
