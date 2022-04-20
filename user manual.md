@@ -1,14 +1,18 @@
 # User Manual
 
 ## Table of Content
+- [System Overview](#system-overview)
+- [System Summary](#system-summary)
+- [System Requirements](#system-requirements)
 - [Set up server environment on Raspberry Pi](#set-up-server-environment-on-raspberry-pi)
 - [Start server locally](#start-server-locally)
 - [Start server remotely](#start-server-remotely)
   * [Server is on Linux](#server-is-on-linux)
   * [Server is on Windows](#server-is-on-windows)
 - [Start Client](#start-client)
-- [Server side error fixing](#server-side-error-fixing)
-- [Reinstall server from Github](#reinstall-server-from-github)
+- [Troubleshooting](#Troubleshooting)
+  * [Server side error fixing](#server-side-error-fixing)
+  * [Reinstall server from Github](#reinstall-server-from-github)
 
 ## System Overview
 Often during simulation, elements within the simulated environment need to be supplemented and controlled. Many off-the-shelf devices that allow for this have limited control, limited power sources, and lack portability. Also, these devices can lack an easy programming language or ease-of-use interface and can be costly.
@@ -131,7 +135,6 @@ After you set up your queue, you just need to click `Upload queue to server`
 You can also save your customed queue to the server:
 
  ![](images/cfgfile.jpg?raw=true "Title")
-
 
 
 # Troubleshooting
