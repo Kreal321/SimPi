@@ -10,6 +10,21 @@
 - [Server side error fixing](#server-side-error-fixing)
 - [Reinstall server from Github](#reinstall-server-from-github)
 
+## System Overview
+Often during simulation, elements within the simulated environment need to be supplemented and controlled. Many off-the-shelf devices that allow for this have limited control, limited power sources, and lack portability. Also, these devices can lack an easy programming language or ease-of-use interface and can be costly.
+
+SimPi provides a platform that can control different power sources, provide relay switching, and multimedia output with an interface running on a browser, which allows users to create routines by dragging and dropping actions (AC outlet on/off) and conditions to move forward, hold, or loop. SimPi aims to provide a platform that can provide controlled power to multiple devices requiring either AC or DC voltage. In addition to power, this device provides the ability to build small custom circuits right on the device, open and close circuits (switches), and output multimedia content via HDMI. The market of small devices and pre-assembled circuits is vast due to the popularity of the Raspberry Pi computer and like products within the hobby and teaching communities. The use of these types of devices can lead to many innovative applications within the medical simulator and simulation environment. 
+
+## System Summary
+The SimPi device and interface that can provide both AC and DC voltage along with switching to different devices to control peripheral components in the simulation environment which can be used to train clinical students.
+
+## System Requirements
+ - python >= 3.5
+ - websockets  Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
+ - multiprocessing support: psutil module
+ - audio support: playsound module
+ - allow python to connect to public network in firewall if you want to run it remotely
+
 ## Set up server environment on Raspberry Pi
 Update `apt`
 ```
