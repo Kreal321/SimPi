@@ -1,3 +1,25 @@
+# Develop Documentation
+
+## Table of Content
+- [Documents](#Documents)
+- [JSON between client and server format](#json-between-client-and-server-format)
+- [SimPi Queue Options](#simpi-queue-options)
+- [Raspberry Pi GPIO](#raspberry-pi-gpio)
+- [Testing guide](#testing-guide)
+- [ICON Guide](#icon-guide)
+- [Raspberry pi login info](#raspberry-pi-login-info)
+- [TP-Link WiFi login info](#tp-link-wifi-login-info)
+- [Raspberry Pi auto start up](#raspberry-pi-auto-start-up)
+
+## Documents
+ - Bootstrap v5.1.3 [Documation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+ - websockets Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
+ - Raspberry Pi GPIO: [Python]( https://sourceforge.net/p/raspberry-gpio-python/wiki/browse_pages/)
+ - icomoon icon: [Guide](https://icomoon.io/app/#/select)
+ - psutil module: [Python](https://psutil.readthedocs.io/en/latest/)
+ - playsound module: [Python](https://github.com/TaylorSMarks/playsound)
+ - multiprocessing module: [Python](https://docs.python.org/3/library/multiprocessing.html)
+
 ## JSON between client and server format
 ```
 {
@@ -31,6 +53,7 @@ server to client
 
 ### Type 8: simpi config file option
 client to server
+
 
 ## SimPi Queue Options
 ```
@@ -74,6 +97,7 @@ If X `type: 8X` \
 End if `type: 80`
 
 #### 9. loop several times
+Not implemented
 
 ## Raspberry Pi GPIO
 - Pin 3 = 110B
@@ -86,23 +110,21 @@ End if `type: 80`
 - Pin 9 = switch
 - Pin 11 = Falling Input
 
-### Testing
+## Testing guide
 ```
 try
 low1
 high1
 ```
 
-## Raspberry pi
+## ICON Guide
+Customed icon from icomoon: [Guide](https://icomoon.io/app/#/select)
+
+## Raspberry pi login info
 User name: Pi
 Password: raspberry
 
-## Documents
- - Bootstrap v5.1.3 [Documation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
- - websockets Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
- - Raspberry Pi GPIO: [Python]( https://sourceforge.net/p/raspberry-gpio-python/wiki/browse_pages/)
-
-## TP-Link
+## TP-Link WiFi login info
 Model No. TL-WR802N \
 Set as client mode.
 ```
@@ -119,7 +141,7 @@ Page: tplinkwifi.net
 Password: simpibox2022
 ```
 
-## Raspberry Pi start up
+## Raspberry Pi auto start up
 Edit start up
 ```
 sudo crontab -e

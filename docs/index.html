@@ -8,22 +8,25 @@
     <!-- Bootstrap v5.1.3 -->
     <link rel="stylesheet" href="asset/css/bootstrap.css">
     <link rel="stylesheet" href="asset/css/style.css">
+    <link rel="stylesheet" href="asset/css/icon.css">
+    
 
 </head>
 <body class="bg-gray-100">
-    <div class="min-height-300 bg-primary position-absolute w-100"></div>
+    <div class="main-bg"></div>
+    <div class="main-nav bg-primary w-100 position-absolute"></div>
     <div class="main-content position-relative border-radius-lg">
         <!-- TODO: Navigation Bar -->
         <nav class="navbar container-fluid p-4">
-            <div class="col-lg-8 col-12 row justify-content-between">
-                <div class="col-5">
+            <div class="row w-100">
+                <div class="col-6">
                     <a class="navbar-brand text-white" href="#">Simpi</a>
                 </div>
-                <div class="col-2 text-end">
-                    <a class="navbar-brand text-white" href="#">Option 1</a>
+                <div class="col-3 text-end">
+                    <a class="navbar-brand text-white m-0" href="https://github.com/Kreal321/SimPi" target="_blank">Documents</a>
                 </div>
-                <div class="col-2 text-end">
-                    <a class="navbar-brand text-white" href="#">Option 2</a>
+                <div class="col-3 text-end">
+                    <a class="navbar-brand text-white m-0" href="#" id="debug-btn">Debug</a>
                 </div>
             </div>
         </nav>
@@ -31,95 +34,101 @@
         <!-- Main Content -->
         <div class="container-fluid py-4">
 
-            <div class="col-lg-8 col-12 alert alert-warning d-none" role="alert" id="alert">
+            <div class="col-12 alert alert-warning d-none" role="alert" id="alert">
                 <strong>Warning!</strong> There are other clients connected to the server!
             </div>
 
-            <div class="col-lg-8 col-12">
-                <div class="card mb-4">
-                    <div class="card-body p-3">
-
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Server Connection</p>
-                        <h5 class="font-weight-bolder text-danger">Not connected</h5>
-                        <div class="input-group mb-0">
-                            <input type="text" class="form-control" placeholder="Server IP Address" id="ip">
-                            <button class="btn btn-outline-primary mb-0" id="ipBtn">Connect</button>
+            <div class="col-12 mb-4 hide">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="card">
+                            <div class="card-body p-3">
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">SimPi Controller</p>
+                                <h5 class="font-weight-bolder">Used for testing and debuging</h5>
+                                <div class="input-group " id="controller-btns">
+                                    <button class="btn btn-outline-primary">Start</button>
+                                    <button class="btn btn-outline-primary">Suspend</button>
+                                    <button class="btn btn-outline-primary">Resume</button>
+                                    <button class="btn btn-outline-primary">Stop</button>
+                                </div>
+                            </div>
                         </div>
-
-                        
                     </div>
+
+                    <div class="col-5">
+                        <div class="card">
+                            <div class="card-body p-3">
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Server Controller</p>
+                                <h5 class="font-weight-bolder">Used for testing and debuging</h5>
+                                <div class="input-group ">
+                                    <input type="text" class="form-control" placeholder="Messages" id="text">
+                                    <button class="btn btn-outline-primary " onclick="send()" id="ipBtn">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
                 </div>
             </div>
 
-
-            <div class="col-lg-8 col-12">
-                <div class="card mb-4">
-                    <div class="card-body p-3">
-
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Server Controller</p>
-                        <h5 class="font-weight-bolder text-danger">Not connected</h5>
-                        <div class="input-group ">
-                            <input type="text" class="form-control" placeholder="Messages" id="text">
-                            <button class="btn btn-outline-primary " onclick="send()" id="ipBtn">Send</button>
+            <div class="col-12 mb-4">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="card">
+                            <div class="card-body p-3">
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Server Connection</p>
+                                <h5 class="font-weight-bolder" id="connectStatus">Not connected</h5>
+                                <div class="input-group mb-0">
+                                    <input type="text" class="form-control" placeholder="Server IP Address" id="ip" value="192.168.0.100">
+                                    <button class="btn btn-outline-primary mb-0" id="connectBtn">Auto Connect</button>
+                                </div>
+                            </div>
                         </div>
-                        
-                        
+                    </div>
+
+                    <div class="col-5">
+                        <div class="card">
+                            <div class="card-body p-3">
+                                <p class="text-sm text-uppercase font-weight-bold">SimPi Queue</p>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="file name" id="configName" required>
+                                    <button class="btn btn-outline-primary" id="deleteConfig">Delete</button>
+                                    <button class="btn btn-outline-primary" id="saveConfig">Save</button>
+                                </div>
+                                <div class="input-group">
+                                    <select class="form-control" id="configList">
+                                        <!-- List will be loaded here when server is connected -->
+                                    </select>
+                                    <button class="btn btn-outline-primary" id="loadConfig">Load</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-
-            <div class="col-lg-8 col-12">
-                <div class="card mb-4">
-                    <div class="card-body p-3">
-
-                        <p class="text-sm mb-0 text-uppercase font-weight-bold">SimPi Controller</p>
-                        <h5 class="font-weight-bolder text-danger">Not connected</h5>
-                        <div class="input-group " id="controller-btns">
-                            <button class="btn btn-outline-primary">Start</button>
-                            <button class="btn btn-outline-primary">Suspend</button>
-                            <button class="btn btn-outline-primary">Resume</button>
-                            <button class="btn btn-outline-primary">Stop</button>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
             </div>
             
 
-            <div class="col-lg-8 col-12">
-                <div class="card mb-4">
-                    <div class="card-header pb-0 p-3 d-flex">
-                        <h6>Screen</h6>
-                        
-                    </div>
-                    <div class="card-body pt-0 p-3">
-                        <div class="height-500 bg-gray-900 border-radius-xl text-white p-3 overflow-y-sroll" id="msg">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-8 col-12">
+            <div class="col-12">
                 <div class="row justify-content-between">
-                    <div class="col-6 mb-4">
+                    <div class="col-7 mb-4">
                         <div class="card">
-                            <div class="card-header pb-0 p-3 d-flex">
+                            <div class="card-header pb-0 p-3 d-flex  ">
                                 <h6>SimPi Queue</h6>
                                 
                             </div>
                             <div class="card-body pt-0 p-3">
-                                <div id="queue">
-        
+                                <div class="draggable-list flowchart" id="queue">
+                                    
                                 </div>
+                                <br/>
                                 <button class="btn btn-outline-primary" id="sendSimpiQ">Upload queue to server</button>
+                                <button class="btn btn-outline-primary" id="clearConfig">Clear</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 mb-4">
-                        <div class="card">
+                    <div class="col-5 mb-4">
+                        <div class="card sticky">
                             <div class="card-header pb-0 p-3 d-flex">
                                 <h6>Options</h6>
 
@@ -130,7 +139,7 @@
                                     <div class="input-group" simpiType="1">
                                         <select class="form-control">
                                             <option value="0">Start</option>
-                                            <option value="1">Click to start</option>
+                                            <option value="1" selected>Click to start</option>
                                         </select>
                                         <button class="btn btn-outline-primary btn-option">Add</button>
                                     </div>                          
@@ -171,15 +180,25 @@
                                 <div class="form-group mb-3">
                                     <div class="input-group" simpiType="6">
                                         <select class="form-control">
-                                            <option value="1">OPEN</option>
-                                            <option value="2">CLOSE</option>
+                                            <option value="1">ON</option>
+                                            <option value="2">OFF</option>
                                         </select>
                                         <select class="form-control">
-                                            <option value="1">Source 1</option>
-                                            <option value="2">Source 2</option>
-                                            <option value="3">Source 3</option>
-                                            <option value="4">Source 4</option>
+                                            <option value="2">GPIO 2</option>
+                                            <option value="3">GPIO 3</option>
+                                            <option value="4">GPIO 4</option>
+                                            <option value="5">GPIO 5</option>
+                                            <option value="6">GPIO 6</option>
+                                            <option value="9">GPIO 9</option>
+                                            <option value="10">GPIO 10</option>
+                                            <option value="11">GPIO 11</option>
+                                            <option value="13">GPIO 13</option>
+                                            <option value="17">GPIO 17</option>
+                                            <option value="19">GPIO 19</option>
+                                            <option value="22">GPIO 22</option>
+                                            <option value="27">GPIO 27</option>
                                         </select>
+                                        <input type="text" class="form-control" placeholder="note" required>
                                         <button class="btn btn-outline-primary btn-option">Add</button>
                                     </div>                         
                                 </div>
@@ -198,42 +217,23 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <div class="input-group">
+                                    <div class="input-group" simpiType="8">
                                         <span class="input-group-text">If</span>
                                         <select class="form-control">
-                                            <option>Sensor input high</option>
-                                            <option>Source 2 is On</option>
+                                            <option value="1">True</option>
+                                            <option value="2">False</option>
                                         </select>
-                                        <button class="btn btn-outline-primary">Add</button>
+                                        <button class="btn btn-outline-primary btn-option">Add</button>
                                     </div>                          
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <div class="input-group">
+                                    <div class="input-group" simpiType="80">
                                         <span class="input-group-text">End If</span>
-                                        <button class="btn btn-outline-primary">Add</button>
+                                        <button class="btn btn-outline-primary btn-option">Add</button>
                                     </div>                          
                                 </div>
 
-
-                                <div class="form-group mb-3">
-                                    <div class="input-group">
-                                        <span class="input-group-text">Loop</span>
-                                        <select class="form-control">
-                                            <option>Option 1</option>
-                                            <option>Option 2</option>
-                                        </select>
-                                        <span class="input-group-text">To</span>
-                                        <select class="form-control">
-                                            <option>Option 1</option>
-                                            <option>Option 2</option>
-                                        </select>
-                                        <input type="number" class="form-control" placeholder="number" required>
-                                        <span class="input-group-text">Times</span>
-                                        <button class="btn btn-outline-primary">Add</button>
-                                    </div>
-                                                                   
-                                </div>
 
                             </div>
                         </div>
@@ -242,40 +242,23 @@
 
             </div>
 
-            <div class="col-lg-8 col-12">
-                <div class="card">
+        
+
+            <div class="col-12 hide">
+                <div class="card mb-4">
                     <div class="card-header pb-0 p-3 d-flex">
-                        <h6>SimPi Queue UI Design</h6>
+                        <h6>Screen</h6>
                         
                     </div>
-                    <div class="card-body pt-0 p-3 flowchart ">
-                        <div class="text-outline-success">Start</div>
-                        <svg viewbox="0 0 10 100">
-                            <line x1="5" x2="5" y1="0" y2="100"/>
-                        </svg>
-                        <div class="text-outline-success">Wait until Sensor input high</div>
-                        <svg viewbox="0 0 10 100">
-                            <line x1="5" x2="5" y1="0" y2="100"/>
-                        </svg>
-                        <div class="text-outline-success">Open Source 1</div>
-                        <svg viewbox="0 0 10 100">
-                            <line x1="5" x2="5" y1="0" y2="100"/>
-                        </svg>
-                        <div class="text-outline-success">Wait 5 seconds</div>
-                        <svg viewbox="0 0 10 100">
-                            <line x1="5" x2="5" y1="0" y2="100"/>
-                        </svg>
-                        <div class="text-outline-success">Stop</div>
+                    <div class="card-body pt-0 p-3">
+                        <div class="height-500 bg-gray-900 border-radius-xl text-white p-3 overflow-y-sroll" id="msg">
 
-                        <br/>
-                        <button class="btn btn-outline-primary" id="sendSimpiQ">Upload queue to server</button>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
+
     </div>
     
 

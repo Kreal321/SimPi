@@ -4,33 +4,42 @@ An interface used in Simpi box based on Raspberry Pi that can supplement simulat
 ## Table of Content
 - [File structure](#file-structure)
 - [Server Requirements](#server-requirements)
-- [Set up server environment](#set-up-server-environment)
+- [Set up server environment on Raspberry Pi](#set-up-server-environment-on-raspberry-pi)
 - [Start server locally](#start-server-locally)
 - [Start server remotely](#start-server-remotely)
   * [Server is on Linux](#server-is-on-linux)
   * [Server is on Windows](#server-is-on-windows)
 - [Start Client](#start-client)
+- [Server side error fixing](#server-side-error-fixing)
+- [Reinstall server from Github](#reinstall-server-from-github)
 - [Change log](#change-log)
-
 
 ## File structure
 ```
 .
 ├── Client                        # Client files
 │   ├── asset                     # Assets files for web application
+│   │   ├── css                   # Css files for client side
+│   │   ├── fonts                 # Icon fonts files for client side 
+│   │   ├── icon                  # Icon demo files
+│   │   └── js                    # JavaScripts files for client side
 │   └── index.html                # Main page of the web application
 ├── Server                        # Server files
 │   ├── __pycahe__                # Bytecode cache python files
+│   ├── Config                    # Config folder storing cfgs as JSON files
 │   ├── Install                   # Files for installing
-│   ├── main.py
-│   ├── messager.py 
-│   ├── messages.py
-│   ├── simpi.py
-│   ├── simpiController.py
-│   └── simpiProcessController.py
+│   ├── audio.py                  # Audio class handling audio subprocess (play/pause/resume/stop)
+│   ├── config.py                 # Config class handling save/update/delete/read cfg files
+│   ├── main.py                   # Entry point of the sever
+│   ├── messager.py               # Messger class handling send and receive messages between client and server
+│   ├── messages.py               # Messages class decode message from client and encode message to client
+│   ├── simpi.py                  # Simpi class handling simpi background subprocess
+│   ├── simpiController.py        # Simpi background controller
+│   └── simpiProcessController.py # Simpi background process controller
+├── Test                          # Auto test folder
 ├── docs                          # Github page root path
 ├── Document.md                   # Doc for developing
-├── README.md                     # Readme file
+├── README.md                     # Readme file for setting up server on raspberry pi
 ├── remote.bat                    # Batch file for starting server on local network (windows)
 └── remote.sh                     # Batch file for starting server on local network (linux)
 ```
@@ -38,12 +47,15 @@ An interface used in Simpi box based on Raspberry Pi that can supplement simulat
 ## Server Requirements
  - python >= 3.5
  - websockets  Documations: [Python](https://websockets.readthedocs.io/en/stable/index.html), [Javascript](https://javascript.info/websocket)
- - psutil  
+ - multiprocessing support: psutil module
+ - audio support: playsound module
  - allow python to connect to public network in firewall if you want to run it remotely
 
 
-## Set up server environment
-Update apt
+
+
+## Set up server environment on Raspberry Pi
+Update `apt`
 ```
 sudo apt-get update -y
 ```
@@ -61,14 +73,16 @@ sudo apt-get install -y rpi.gpio
 ```
 Install `playsound`
 ```
-sudo apt-get install -y playsound==1.2.2 
+sudo pip3 install playsound==1.2.2 
+sudo apt install python3-gst-1.0
 ```
-Check python version
+Check `python` version
 ```
 python3 --version
 ```
 
-If python version < 3.5, install `python 3.7`. Required python version >= 3.5
+If python version < 3.5, install `python 3.7`. \
+Required python version >= 3.5
 ```
 sudo apt install python3.7
 ```
@@ -94,23 +108,46 @@ start remote.bat
 ```
 
 ## Start Client
-Run index.html \
-Or Go to https://kreal321.github.io/SimPi/
+1. Run index.html \
+Or open https://kreal321.github.io/SimPi/ in browser
 
-Run index.html \
-Connect to the ip address show in the server terminal \
-e.g. Connect to `127.0.0.1` if server is run locally
+2. Connect to server
+```
+Connect to the ip address show in the server terminal
+e.g. Connect to 127.0.0.1 if server is run locally
+```
 
-## Manully Kill process
+3. Set up SimPi Queue from options or Read config files
+
+
+## Server side error fixing
+1. Manully kill process
 ```
 sudo killall sudo python3
 ```
+2. Run Server maunally
+```
+cd Desktop/SimPi
+./remote.sh
+```
+
+## Reinstall server from Github
+1. Delete previous folder
+```
+cd Desktop
 rm -rf SimPi
+```
+2. Pull from Github
+```
+cd Desktop
+./git.sh
+```
 
 ## Change log
 ## 4/19/2022
 - Audio bugs fix
 - Add play/pasue/resume/stop audio options
+- Docs updates
 
 ## 4/13/2022
 - fix GPIO bugs

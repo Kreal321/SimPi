@@ -153,7 +153,7 @@ button.not-allowed {
 
 .sticky {
   position: sticky;
-  top: 20%;
+  top: 20px;
 }
 
 
