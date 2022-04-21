@@ -13,9 +13,13 @@
 ## Install Raspberry Pi OS using Raspberry Pi Imager
 1. Download Raspberry Pi Imager: [Windows](https://downloads.raspberrypi.org/imager/imager_latest.exe), [macOS](https://downloads.raspberrypi.org/imager/imager_latest.dmg), [Ubuntu](https://downloads.raspberrypi.org/imager/imager_latest_amd64.deb)
 2. Open Raspberry Pi Imager
+
 ![](images/raspberrypiimager.jpg?raw=true "Title")
+
 3. Choose Operating System. You need to choose **Raspberry Pi OS (32-bit)** if you are using Raspberry Pi 2
+
 ![](images/chooseos.jpg?raw=true "Title")
+
 4. Choose a storage
 5. Writing and wait for success
 

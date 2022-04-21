@@ -144,6 +144,9 @@ cd Desktop
 ```
 
 ## Change log
+## 4/21/2022
+- update installation guide, develop doc and user manual
+
 ## 4/19/2022
 - Audio bugs fix
 - Add play/pasue/resume/stop audio options
